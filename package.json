@@ -1,6 +1,6 @@
 {
-  "name": "dagre",
-  "version": "0.7.5-pre",
+  "name": "dagre-layout",
+  "version": "0.7.5",
   "description": "Graph layout for JavaScript",
   "author": "Chris Pettitt <cpettitt@gmail.com>",
   "main": "index.js",
@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "test": "make test",
-     "upgrade": "yarn-upgrade-all"
+    "build": "make dist",
+    "upgrade": "yarn-upgrade-all"
   },
   "dependencies": {
     "graphlib": "^1.0.5",
@@ -37,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cpettitt/dagre.git"
+    "url": "https://github.com/tylingsoft/dagre-layout.git"
   },
   "license": "MIT"
 }

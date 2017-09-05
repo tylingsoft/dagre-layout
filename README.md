@@ -16,6 +16,13 @@ yarn install
 ```
 
 
+## Build
+
+```
+yarn build
+```
+
+
 ## Test
 
 ```
@@ -25,4 +32,4 @@ yarn test
 
 ## License
 
-dagre is licensed under the terms of the MIT License. See the LICENSE file for details.
+dagre-layout is licensed under the terms of the MIT License. See the LICENSE file for details.
