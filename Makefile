@@ -1,6 +1,6 @@
 MOD = dagre
 
-NPM = npm
+YARN = yarn
 BROWSERIFY = ./node_modules/browserify/bin/cmd.js
 ISTANBUL = ./node_modules/istanbul/lib/cli.js
 JSHINT = ./node_modules/jshint/bin/jshint
@@ -75,5 +75,5 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 node_modules: package.json
-	@$(NPM) install
+	@$(YARN) install
 	@touch $@
