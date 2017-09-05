@@ -1,6 +1,6 @@
 # dagre-layout - Graph layout for JavaScript
 
-[![Build Status](https://secure.travis-ci.org/cpettitt/dagre.png?branch=master)](http://travis-ci.org/cpettitt/dagre)
+[![Build Status](https://secure.travis-ci.org/tylingsoft/dagre-layout.png?branch=master)](http://travis-ci.org/tylingsoft/dagre-layout)
 
 This project is an out-of-box replacement for [dagre](https://github.com/cpettitt/dagre) which is not being actively developed or maintained.
 

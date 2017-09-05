@@ -2,7 +2,7 @@
   "name": "dagre-layout",
   "version": "0.7.5",
   "description": "Graph layout for JavaScript",
-  "author": "Chris Pettitt <cpettitt@gmail.com>",
+  "author": "Tyler Long <tyler4long@gmail.com>",
   "main": "index.js",
   "keywords": [
     "graph",
