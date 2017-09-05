@@ -45,9 +45,8 @@ unit-test: $(SRC_FILES) $(TEST_FILES) node_modules | $(BUILD_DIR)
 	@$(JSHINT) $(JSHINT_OPTS) $(filter-out node_modules, $?)
 	@$(JSCS) $(filter-out node_modules, $?)
 
-browser-test: $(BUILD_DIR)/$(MOD).js $(BUILD_DIR)/$(MOD).core.js
+browser-test: $(BUILD_DIR)/$(MOD).js
 	$(KARMA) start --single-run $(KARMA_OPTS)
-	$(KARMA) start karma.core.conf.js --single-run $(KARMA_OPTS)
 
 $(BUILD_DIR)/$(MOD).js: index.js $(SRC_FILES) | unit-test
 	@$(BROWSERIFY) $< > $@ -s dagre
