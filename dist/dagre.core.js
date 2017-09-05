@@ -2876,7 +2876,7 @@ function notime(name, fn) {
 }
 
 },{"./graphlib":7,"./lodash":10}],30:[function(require,module,exports){
-module.exports = "0.7.5";
+module.exports = "0.7.6";
 
 },{}]},{},[1])(1)
 });
