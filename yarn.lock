@@ -3094,6 +3094,10 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash-migrate@^0.3.16:
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/lodash-migrate/-/lodash-migrate-0.3.16.tgz#ecc396276082e915091dded8d554aa1ddc08088d"
+
 lodash._baseassign@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz#8c38a099500f215ad09e59f1722fd0c52bfe0a4e"

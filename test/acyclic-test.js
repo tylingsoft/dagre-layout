@@ -1,5 +1,6 @@
 /* eslint-env mocha */
-import _ from 'lodash'
+const _ = require('lodash')
+require('lodash-migrate')
 const expect = require('./chai').expect
 const acyclic = require('../lib/acyclic')
 const Graph = require('graphlib').Graph
