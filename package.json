@@ -9,7 +9,8 @@
     "layout"
   ],
   "scripts": {
-    "test": "make test",
+    "lint": "standard",
+    "test": "yarn lint && make test",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors",
     "build:watch": "yarn build -- --watch",
     "upgrade": "yarn-upgrade-all && yarn remove lodash && yarn add lodash@3.10.1"
@@ -44,5 +45,11 @@
     "type": "git",
     "url": "https://github.com/tylingsoft/dagre-layout.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "standard": {
+    "ignore": [
+      "dist/**/*.js",
+      "coverage/**/*.js"
+    ]
+  }
 }
