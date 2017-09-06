@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var expect = require('../chai').expect,
   List = require('../../lib/data/list')
 

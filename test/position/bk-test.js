@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var _ = require('lodash'),
   expect = require('../chai').expect,
   buildLayerMatrix = require('../../lib/util').buildLayerMatrix,

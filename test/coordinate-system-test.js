@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var Graph = require('graphlib').Graph,
   coordinateSystem = require('../lib/coordinate-system'),
   expect = require('./chai').expect

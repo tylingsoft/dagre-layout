@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var expect = require('../chai').expect,
   barycenter = require('../../lib/order/barycenter'),
   Graph = require('graphlib').Graph

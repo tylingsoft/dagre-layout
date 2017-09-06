@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var expect = require('./chai').expect,
   addBorderSegments = require('../lib/add-border-segments'),
   Graph = require('graphlib').Graph

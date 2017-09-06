@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var expect = require('./chai').expect
 
 describe('version', function () {

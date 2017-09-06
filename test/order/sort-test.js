@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var expect = require('../chai').expect,
   sort = require('../../lib/order/sort')
 

@@ -121,12 +121,11 @@ module.exports = {
   partition: partition,
   time: time,
   notime: notime
-};
 
-/*
- * Adds a dummy node to the graph and return v.
- */
-function addDummyNode(g, type, attrs, name) {
+  /*
+   * Adds a dummy node to the graph and return v.
+   */
+};function addDummyNode(g, type, attrs, name) {
   var v;
   do {
     v = _.uniqueId(name);
@@ -208,7 +207,7 @@ function intersectRect(rect, point) {
   var h = rect.height / 2;
 
   if (!dx && !dy) {
-    throw new Error("Not possible to find intersection inside of the rectangle");
+    throw new Error('Not possible to find intersection inside of the rectangle');
   }
 
   var sx, sy;
@@ -259,7 +258,7 @@ function normalizeRanks(g) {
   }));
   _.each(g.nodes(), function (v) {
     var node = g.node(v);
-    if (_.has(node, "rank")) {
+    if (_.has(node, 'rank')) {
       node.rank -= min;
     }
   });
@@ -302,7 +301,7 @@ function addBorderNode(g, prefix, rank, order) {
     node.rank = rank;
     node.order = order;
   }
-  return addDummyNode(g, "border", node, prefix);
+  return addDummyNode(g, 'border', node, prefix);
 }
 
 function maxRank(g) {
@@ -340,7 +339,7 @@ function time(name, fn) {
   try {
     return fn();
   } finally {
-    console.log(name + " time: " + (_.now() - start) + "ms");
+    console.log(name + ' time: ' + (_.now() - start) + 'ms');
   }
 }
 
@@ -383,30 +382,29 @@ var _ = __webpack_require__(0);
 module.exports = {
   longestPath: longestPath,
   slack: slack
-};
 
-/*
- * Initializes ranks for the input graph using the longest path algorithm. This
- * algorithm scales well and is fast in practice, it yields rather poor
- * solutions. Nodes are pushed to the lowest layer possible, leaving the bottom
- * ranks wide and leaving edges longer than necessary. However, due to its
- * speed, this algorithm is good for getting an initial ranking that can be fed
- * into other algorithms.
- *
- * This algorithm does not normalize layers because it will be used by other
- * algorithms in most cases. If using this algorithm directly, be sure to
- * run normalize at the end.
- *
- * Pre-conditions:
- *
- *    1. Input graph is a DAG.
- *    2. Input graph node labels can be assigned properties.
- *
- * Post-conditions:
- *
- *    1. Each node will be assign an (unnormalized) "rank" property.
- */
-function longestPath(g) {
+  /*
+   * Initializes ranks for the input graph using the longest path algorithm. This
+   * algorithm scales well and is fast in practice, it yields rather poor
+   * solutions. Nodes are pushed to the lowest layer possible, leaving the bottom
+   * ranks wide and leaving edges longer than necessary. However, due to its
+   * speed, this algorithm is good for getting an initial ranking that can be fed
+   * into other algorithms.
+   *
+   * This algorithm does not normalize layers because it will be used by other
+   * algorithms in most cases. If using this algorithm directly, be sure to
+   * run normalize at the end.
+   *
+   * Pre-conditions:
+   *
+   *    1. Input graph is a DAG.
+   *    2. Input graph node labels can be assigned properties.
+   *
+   * Post-conditions:
+   *
+   *    1. Each node will be assign an (unnormalized) "rank" property.
+   */
+};function longestPath(g) {
   var visited = {};
 
   function dfs(v) {
@@ -584,99 +582,99 @@ module.exports = layout;
 
 function layout(g, opts) {
   var time = opts && opts.debugTiming ? util.time : util.notime;
-  time("layout", function () {
-    var layoutGraph = time("  buildLayoutGraph", function () {
+  time('layout', function () {
+    var layoutGraph = time('  buildLayoutGraph', function () {
       return buildLayoutGraph(g);
     });
-    time("  runLayout", function () {
+    time('  runLayout', function () {
       runLayout(layoutGraph, time);
     });
-    time("  updateInputGraph", function () {
+    time('  updateInputGraph', function () {
       updateInputGraph(g, layoutGraph);
     });
   });
 }
 
 function runLayout(g, time) {
-  time("    makeSpaceForEdgeLabels", function () {
+  time('    makeSpaceForEdgeLabels', function () {
     makeSpaceForEdgeLabels(g);
   });
-  time("    removeSelfEdges", function () {
+  time('    removeSelfEdges', function () {
     removeSelfEdges(g);
   });
-  time("    acyclic", function () {
+  time('    acyclic', function () {
     acyclic.run(g);
   });
-  time("    nestingGraph.run", function () {
+  time('    nestingGraph.run', function () {
     nestingGraph.run(g);
   });
-  time("    rank", function () {
+  time('    rank', function () {
     rank(util.asNonCompoundGraph(g));
   });
-  time("    injectEdgeLabelProxies", function () {
+  time('    injectEdgeLabelProxies', function () {
     injectEdgeLabelProxies(g);
   });
-  time("    removeEmptyRanks", function () {
+  time('    removeEmptyRanks', function () {
     removeEmptyRanks(g);
   });
-  time("    nestingGraph.cleanup", function () {
+  time('    nestingGraph.cleanup', function () {
     nestingGraph.cleanup(g);
   });
-  time("    normalizeRanks", function () {
+  time('    normalizeRanks', function () {
     normalizeRanks(g);
   });
-  time("    assignRankMinMax", function () {
+  time('    assignRankMinMax', function () {
     assignRankMinMax(g);
   });
-  time("    removeEdgeLabelProxies", function () {
+  time('    removeEdgeLabelProxies', function () {
     removeEdgeLabelProxies(g);
   });
-  time("    normalize.run", function () {
+  time('    normalize.run', function () {
     normalize.run(g);
   });
-  time("    parentDummyChains", function () {
+  time('    parentDummyChains', function () {
     parentDummyChains(g);
   });
-  time("    addBorderSegments", function () {
+  time('    addBorderSegments', function () {
     addBorderSegments(g);
   });
-  time("    order", function () {
+  time('    order', function () {
     order(g);
   });
-  time("    insertSelfEdges", function () {
+  time('    insertSelfEdges', function () {
     insertSelfEdges(g);
   });
-  time("    adjustCoordinateSystem", function () {
+  time('    adjustCoordinateSystem', function () {
     coordinateSystem.adjust(g);
   });
-  time("    position", function () {
+  time('    position', function () {
     position(g);
   });
-  time("    positionSelfEdges", function () {
+  time('    positionSelfEdges', function () {
     positionSelfEdges(g);
   });
-  time("    removeBorderNodes", function () {
+  time('    removeBorderNodes', function () {
     removeBorderNodes(g);
   });
-  time("    normalize.undo", function () {
+  time('    normalize.undo', function () {
     normalize.undo(g);
   });
-  time("    fixupEdgeLabelCoords", function () {
+  time('    fixupEdgeLabelCoords', function () {
     fixupEdgeLabelCoords(g);
   });
-  time("    undoCoordinateSystem", function () {
+  time('    undoCoordinateSystem', function () {
     coordinateSystem.undo(g);
   });
-  time("    translateGraph", function () {
+  time('    translateGraph', function () {
     translateGraph(g);
   });
-  time("    assignNodeIntersects", function () {
+  time('    assignNodeIntersects', function () {
     assignNodeIntersects(g);
   });
-  time("    reversePoints", function () {
+  time('    reversePoints', function () {
     reversePointsForReversedEdges(g);
   });
-  time("    acyclic.undo", function () {
+  time('    acyclic.undo', function () {
     acyclic.undo(g);
   });
 }
@@ -708,7 +706,7 @@ function updateInputGraph(inputGraph, layoutGraph) {
         layoutLabel = layoutGraph.edge(e);
 
     inputLabel.points = layoutLabel.points;
-    if (_.has(layoutLabel, "x")) {
+    if (_.has(layoutLabel, 'x')) {
       inputLabel.x = layoutLabel.x;
       inputLabel.y = layoutLabel.y;
     }
@@ -718,17 +716,21 @@ function updateInputGraph(inputGraph, layoutGraph) {
   inputGraph.graph().height = layoutGraph.graph().height;
 }
 
-var graphNumAttrs = ["nodesep", "edgesep", "ranksep", "marginx", "marginy"],
-    graphDefaults = { ranksep: 50, edgesep: 20, nodesep: 50, rankdir: "tb" },
-    graphAttrs = ["acyclicer", "ranker", "rankdir", "align"],
-    nodeNumAttrs = ["width", "height"],
+var graphNumAttrs = ['nodesep', 'edgesep', 'ranksep', 'marginx', 'marginy'],
+    graphDefaults = { ranksep: 50, edgesep: 20, nodesep: 50, rankdir: 'tb' },
+    graphAttrs = ['acyclicer', 'ranker', 'rankdir', 'align'],
+    nodeNumAttrs = ['width', 'height'],
     nodeDefaults = { width: 0, height: 0 },
-    edgeNumAttrs = ["minlen", "weight", "width", "height", "labeloffset"],
+    edgeNumAttrs = ['minlen', 'weight', 'width', 'height', 'labeloffset'],
     edgeDefaults = {
-  minlen: 1, weight: 1, width: 0, height: 0,
-  labeloffset: 10, labelpos: "r"
+  minlen: 1,
+  weight: 1,
+  width: 0,
+  height: 0,
+  labeloffset: 10,
+  labelpos: 'r'
 },
-    edgeAttrs = ["labelpos"];
+    edgeAttrs = ['labelpos'];
 
 /*
  * Constructs a new graph from the input graph, which can be used for layout.
@@ -770,8 +772,8 @@ function makeSpaceForEdgeLabels(g) {
   _.each(g.edges(), function (e) {
     var edge = g.edge(e);
     edge.minlen *= 2;
-    if (edge.labelpos.toLowerCase() !== "c") {
-      if (graph.rankdir === "TB" || graph.rankdir === "BT") {
+    if (edge.labelpos.toLowerCase() !== 'c') {
+      if (graph.rankdir === 'TB' || graph.rankdir === 'BT') {
         edge.width += edge.labeloffset;
       } else {
         edge.height += edge.labeloffset;
@@ -793,7 +795,7 @@ function injectEdgeLabelProxies(g) {
       var v = g.node(e.v),
           w = g.node(e.w),
           label = { rank: (w.rank - v.rank) / 2 + v.rank, e: e };
-      util.addDummyNode(g, "edge-proxy", label, "_ep");
+      util.addDummyNode(g, 'edge-proxy', label, '_ep');
     }
   });
 }
@@ -814,7 +816,7 @@ function assignRankMinMax(g) {
 function removeEdgeLabelProxies(g) {
   _.each(g.nodes(), function (v) {
     var node = g.node(v);
-    if (node.dummy === "edge-proxy") {
+    if (node.dummy === 'edge-proxy') {
       g.edge(node.e).labelRank = node.rank;
       g.removeNode(v);
     }
@@ -846,7 +848,7 @@ function translateGraph(g) {
   });
   _.each(g.edges(), function (e) {
     var edge = g.edge(e);
-    if (_.has(edge, "x")) {
+    if (_.has(edge, 'x')) {
       getExtremes(edge);
     }
   });
@@ -866,10 +868,10 @@ function translateGraph(g) {
       p.x -= minX;
       p.y -= minY;
     });
-    if (_.has(edge, "x")) {
+    if (_.has(edge, 'x')) {
       edge.x -= minX;
     }
-    if (_.has(edge, "y")) {
+    if (_.has(edge, 'y')) {
       edge.y -= minY;
     }
   });
@@ -901,14 +903,14 @@ function assignNodeIntersects(g) {
 function fixupEdgeLabelCoords(g) {
   _.each(g.edges(), function (e) {
     var edge = g.edge(e);
-    if (_.has(edge, "x")) {
-      if (edge.labelpos === "l" || edge.labelpos === "r") {
+    if (_.has(edge, 'x')) {
+      if (edge.labelpos === 'l' || edge.labelpos === 'r') {
         edge.width -= edge.labeloffset;
       }
       switch (edge.labelpos) {
-        case "l":
+        case 'l':
           edge.x -= edge.width / 2 + edge.labeloffset;break;
-        case "r":
+        case 'r':
           edge.x += edge.width / 2 + edge.labeloffset;break;
       }
     }
@@ -941,7 +943,7 @@ function removeBorderNodes(g) {
   });
 
   _.each(g.nodes(), function (v) {
-    if (g.node(v).dummy === "border") {
+    if (g.node(v).dummy === 'border') {
       g.removeNode(v);
     }
   });
@@ -968,14 +970,14 @@ function insertSelfEdges(g) {
       var node = g.node(v);
       node.order = i + orderShift;
       _.each(node.selfEdges, function (selfEdge) {
-        util.addDummyNode(g, "selfedge", {
+        util.addDummyNode(g, 'selfedge', {
           width: selfEdge.label.width,
           height: selfEdge.label.height,
           rank: node.rank,
           order: i + ++orderShift,
           e: selfEdge.e,
           label: selfEdge.label
-        }, "_se");
+        }, '_se');
       });
       delete node.selfEdges;
     });
@@ -985,7 +987,7 @@ function insertSelfEdges(g) {
 function positionSelfEdges(g) {
   _.each(g.nodes(), function (v) {
     var node = g.node(v);
-    if (node.dummy === "selfedge") {
+    if (node.dummy === 'selfedge') {
       var selfNode = g.node(node.e.v),
           x = selfNode.x + selfNode.width / 2,
           y = selfNode.y,
@@ -1034,13 +1036,13 @@ module.exports = {
 };
 
 function run(g) {
-  var fas = g.graph().acyclicer === "greedy" ? greedyFAS(g, weightFn(g)) : dfsFAS(g);
+  var fas = g.graph().acyclicer === 'greedy' ? greedyFAS(g, weightFn(g)) : dfsFAS(g);
   _.each(fas, function (e) {
     var label = g.edge(e);
     g.removeEdge(e);
     label.forwardName = e.name;
     label.reversed = true;
-    g.setEdge(e.w, e.v, label, _.uniqueId("rev"));
+    g.setEdge(e.w, e.v, label, _.uniqueId('rev'));
   });
 
   function weightFn(g) {
@@ -1170,7 +1172,7 @@ function removeNode(g, buckets, zeroIdx, entry, collectPredecessors) {
     var weight = g.edge(edge),
         w = edge.w,
         wEntry = g.node(w);
-    wEntry["in"] -= weight;
+    wEntry['in'] -= weight;
     assignBucket(buckets, zeroIdx, wEntry);
   });
 
@@ -1185,7 +1187,7 @@ function buildState(g, weightFn) {
       maxOut = 0;
 
   _.each(g.nodes(), function (v) {
-    fasGraph.setNode(v, { v: v, "in": 0, out: 0 });
+    fasGraph.setNode(v, { v: v, 'in': 0, out: 0 });
   });
 
   // Aggregate weights on nodes, but also sum the weights across multi-edges
@@ -1196,7 +1198,7 @@ function buildState(g, weightFn) {
         edgeWeight = prevWeight + weight;
     fasGraph.setEdge(e.v, e.w, edgeWeight);
     maxOut = Math.max(maxOut, fasGraph.node(e.v).out += weight);
-    maxIn = Math.max(maxIn, fasGraph.node(e.w)["in"] += weight);
+    maxIn = Math.max(maxIn, fasGraph.node(e.w)['in'] += weight);
   });
 
   var buckets = _.range(maxOut + maxIn + 3).map(function () {
@@ -1214,10 +1216,10 @@ function buildState(g, weightFn) {
 function assignBucket(buckets, zeroIdx, entry) {
   if (!entry.out) {
     buckets[0].enqueue(entry);
-  } else if (!entry["in"]) {
+  } else if (!entry['in']) {
     buckets[buckets.length - 1].enqueue(entry);
   } else {
-    buckets[entry.out - entry["in"] + zeroIdx].enqueue(entry);
+    buckets[entry.out - entry['in'] + zeroIdx].enqueue(entry);
   }
 }
 
@@ -1269,7 +1271,7 @@ List.prototype.toString = function () {
     strs.push(JSON.stringify(curr, filterOutLinks));
     curr = curr._prev;
   }
-  return "[" + strs.join(", ") + "]";
+  return '[' + strs.join(', ') + ']';
 };
 
 function unlink(entry) {
@@ -1280,7 +1282,7 @@ function unlink(entry) {
 }
 
 function filterOutLinks(k, v) {
-  if (k !== "_next" && k !== "_prev") {
+  if (k !== '_next' && k !== '_prev') {
     return v;
   }
 }
@@ -1298,25 +1300,24 @@ var _ = __webpack_require__(0),
 module.exports = {
   run: run,
   undo: undo
-};
 
-/*
- * Breaks any long edges in the graph into short segments that span 1 layer
- * each. This operation is undoable with the denormalize function.
- *
- * Pre-conditions:
- *
- *    1. The input graph is a DAG.
- *    2. Each node in the graph has a "rank" property.
- *
- * Post-condition:
- *
- *    1. All edges in the graph have a length of 1.
- *    2. Dummy nodes are added where edges have been split into segments.
- *    3. The graph is augmented with a "dummyChains" attribute which contains
- *       the first dummy in each chain of dummy nodes produced.
- */
-function run(g) {
+  /*
+   * Breaks any long edges in the graph into short segments that span 1 layer
+   * each. This operation is undoable with the denormalize function.
+   *
+   * Pre-conditions:
+   *
+   *    1. The input graph is a DAG.
+   *    2. Each node in the graph has a "rank" property.
+   *
+   * Post-condition:
+   *
+   *    1. All edges in the graph have a length of 1.
+   *    2. Dummy nodes are added where edges have been split into segments.
+   *    3. The graph is augmented with a "dummyChains" attribute which contains
+   *       the first dummy in each chain of dummy nodes produced.
+   */
+};function run(g) {
   g.graph().dummyChains = [];
   _.each(g.edges(), function (edge) {
     normalizeEdge(g, edge);
@@ -1340,15 +1341,17 @@ function normalizeEdge(g, e) {
   for (i = 0, ++vRank; vRank < wRank; ++i, ++vRank) {
     edgeLabel.points = [];
     attrs = {
-      width: 0, height: 0,
-      edgeLabel: edgeLabel, edgeObj: e,
+      width: 0,
+      height: 0,
+      edgeLabel: edgeLabel,
+      edgeObj: e,
       rank: vRank
     };
-    dummy = util.addDummyNode(g, "edge", attrs, "_d");
+    dummy = util.addDummyNode(g, 'edge', attrs, '_d');
     if (vRank === labelRank) {
       attrs.width = edgeLabel.width;
       attrs.height = edgeLabel.height;
-      attrs.dummy = "edge-label";
+      attrs.dummy = 'edge-label';
       attrs.labelpos = edgeLabel.labelpos;
     }
     g.setEdge(v, dummy, { weight: edgeLabel.weight }, name);
@@ -1371,7 +1374,7 @@ function undo(g) {
       w = g.successors(v)[0];
       g.removeNode(v);
       origLabel.points.push({ x: node.x, y: node.y });
-      if (node.dummy === "edge-label") {
+      if (node.dummy === 'edge-label') {
         origLabel.x = node.x;
         origLabel.y = node.y;
         origLabel.width = node.width;
@@ -1418,11 +1421,11 @@ module.exports = rank;
  */
 function rank(g) {
   switch (g.graph().ranker) {
-    case "network-simplex":
+    case 'network-simplex':
       networkSimplexRanker(g);break;
-    case "tight-tree":
+    case 'tight-tree':
       tightTreeRanker(g);break;
-    case "longest-path":
+    case 'longest-path':
       longestPathRanker(g);break;
     default:
       networkSimplexRanker(g);
@@ -1791,33 +1794,32 @@ var _ = __webpack_require__(0),
 module.exports = {
   run: run,
   cleanup: cleanup
-};
 
-/*
- * A nesting graph creates dummy nodes for the tops and bottoms of subgraphs,
- * adds appropriate edges to ensure that all cluster nodes are placed between
- * these boundries, and ensures that the graph is connected.
- *
- * In addition we ensure, through the use of the minlen property, that nodes
- * and subgraph border nodes to not end up on the same rank.
- *
- * Preconditions:
- *
- *    1. Input graph is a DAG
- *    2. Nodes in the input graph has a minlen attribute
- *
- * Postconditions:
- *
- *    1. Input graph is connected.
- *    2. Dummy nodes are added for the tops and bottoms of subgraphs.
- *    3. The minlen attribute for nodes is adjusted to ensure nodes do not
- *       get placed on the same rank as subgraph border nodes.
- *
- * The nesting graph idea comes from Sander, "Layout of Compound Directed
- * Graphs."
- */
-function run(g) {
-  var root = util.addDummyNode(g, "root", {}, "_root"),
+  /*
+   * A nesting graph creates dummy nodes for the tops and bottoms of subgraphs,
+   * adds appropriate edges to ensure that all cluster nodes are placed between
+   * these boundries, and ensures that the graph is connected.
+   *
+   * In addition we ensure, through the use of the minlen property, that nodes
+   * and subgraph border nodes to not end up on the same rank.
+   *
+   * Preconditions:
+   *
+   *    1. Input graph is a DAG
+   *    2. Nodes in the input graph has a minlen attribute
+   *
+   * Postconditions:
+   *
+   *    1. Input graph is connected.
+   *    2. Dummy nodes are added for the tops and bottoms of subgraphs.
+   *    3. The minlen attribute for nodes is adjusted to ensure nodes do not
+   *       get placed on the same rank as subgraph border nodes.
+   *
+   * The nesting graph idea comes from Sander, "Layout of Compound Directed
+   * Graphs."
+   */
+};function run(g) {
+  var root = util.addDummyNode(g, 'root', {}, '_root'),
       depths = treeDepths(g),
       height = _.max(depths) - 1,
       nodeSep = 2 * height + 1;
@@ -1851,8 +1853,8 @@ function dfs(g, root, nodeSep, weight, height, depths, v) {
     return;
   }
 
-  var top = util.addBorderNode(g, "_bt"),
-      bottom = util.addBorderNode(g, "_bb"),
+  var top = util.addBorderNode(g, '_bt'),
+      bottom = util.addBorderNode(g, '_bb'),
       label = g.node(v);
 
   g.setParent(top, v);
@@ -1942,12 +1944,12 @@ function addBorderSegments(g) {
       _.each(children, dfs);
     }
 
-    if (_.has(node, "minRank")) {
+    if (_.has(node, 'minRank')) {
       node.borderLeft = [];
       node.borderRight = [];
       for (var rank = node.minRank, maxRank = node.maxRank + 1; rank < maxRank; ++rank) {
-        addBorderNode(g, "borderLeft", "_bl", v, node, rank);
-        addBorderNode(g, "borderRight", "_br", v, node, rank);
+        addBorderNode(g, 'borderLeft', '_bl', v, node, rank);
+        addBorderNode(g, 'borderRight', '_br', v, node, rank);
       }
     }
   }
@@ -1958,7 +1960,7 @@ function addBorderSegments(g) {
 function addBorderNode(g, prop, prefix, sg, sgNode, rank) {
   var label = { width: 0, height: 0, rank: rank, borderType: prop },
       prev = sgNode[prop][rank - 1],
-      curr = util.addDummyNode(g, "border", label, prefix);
+      curr = util.addDummyNode(g, 'border', label, prefix);
   sgNode[prop][rank] = curr;
   g.setParent(curr, sg);
   if (prev) {
@@ -1982,18 +1984,18 @@ module.exports = {
 
 function adjust(g) {
   var rankDir = g.graph().rankdir.toLowerCase();
-  if (rankDir === "lr" || rankDir === "rl") {
+  if (rankDir === 'lr' || rankDir === 'rl') {
     swapWidthHeight(g);
   }
 }
 
 function undo(g) {
   var rankDir = g.graph().rankdir.toLowerCase();
-  if (rankDir === "bt" || rankDir === "rl") {
+  if (rankDir === 'bt' || rankDir === 'rl') {
     reverseY(g);
   }
 
-  if (rankDir === "lr" || rankDir === "rl") {
+  if (rankDir === 'lr' || rankDir === 'rl') {
     swapXY(g);
     swapWidthHeight(g);
   }
@@ -2022,7 +2024,7 @@ function reverseY(g) {
   _.each(g.edges(), function (e) {
     var edge = g.edge(e);
     _.each(edge.points, reverseYOne);
-    if (_.has(edge, "y")) {
+    if (_.has(edge, 'y')) {
       reverseYOne(edge);
     }
   });
@@ -2040,7 +2042,7 @@ function swapXY(g) {
   _.each(g.edges(), function (e) {
     var edge = g.edge(e);
     _.each(edge.points, swapXYOne);
-    if (_.has(edge, "x")) {
+    if (_.has(edge, 'x')) {
       swapXYOne(edge);
     }
   });
@@ -2087,8 +2089,8 @@ module.exports = order;
  */
 function order(g) {
   var maxRank = util.maxRank(g),
-      downLayerGraphs = buildLayerGraphs(g, _.range(1, maxRank + 1), "inEdges"),
-      upLayerGraphs = buildLayerGraphs(g, _.range(maxRank - 1, -1, -1), "outEdges");
+      downLayerGraphs = buildLayerGraphs(g, _.range(1, maxRank + 1), 'inEdges'),
+      upLayerGraphs = buildLayerGraphs(g, _.range(maxRank - 1, -1, -1), 'outEdges');
 
   var layering = initOrder(g);
   assignOrder(g, layering);
@@ -2232,7 +2234,7 @@ function twoLayerCrossCount(g, northLayer, southLayer) {
   var southEntries = _.flatten(_.map(northLayer, function (v) {
     return _.chain(g.outEdges(v)).map(function (e) {
       return { pos: southPos[e.w], weight: g.edge(e).weight };
-    }).sortBy("pos").value();
+    }).sortBy('pos').value();
   }), true);
 
   // Build the accumulator tree
@@ -2296,7 +2298,7 @@ function sortSubgraph(g, v, cg, biasRight) {
     if (g.children(entry.v).length) {
       var subgraphResult = sortSubgraph(g, entry.v, cg, biasRight);
       subgraphs[entry.v] = subgraphResult;
-      if (_.has(subgraphResult, "barycenter")) {
+      if (_.has(subgraphResult, 'barycenter')) {
         mergeBarycenters(entry, subgraphResult);
       }
     }
@@ -2312,7 +2314,7 @@ function sortSubgraph(g, v, cg, biasRight) {
     if (g.predecessors(bl).length) {
       var blPred = g.node(g.predecessors(bl)[0]),
           brPred = g.node(g.predecessors(br)[0]);
-      if (!_.has(result, "barycenter")) {
+      if (!_.has(result, 'barycenter')) {
         result.barycenter = 0;
         result.weight = 0;
       }
@@ -2421,7 +2423,7 @@ function resolveConflicts(entries, cg) {
   _.each(entries, function (entry, i) {
     var tmp = mappedEntries[entry.v] = {
       indegree: 0,
-      "in": [],
+      'in': [],
       out: [],
       vs: [entry.v],
       i: i
@@ -2464,7 +2466,7 @@ function doResolveConflicts(sourceSet) {
 
   function handleOut(vEntry) {
     return function (wEntry) {
-      wEntry["in"].push(vEntry);
+      wEntry['in'].push(vEntry);
       if (--wEntry.indegree === 0) {
         sourceSet.push(wEntry);
       }
@@ -2474,14 +2476,14 @@ function doResolveConflicts(sourceSet) {
   while (sourceSet.length) {
     var entry = sourceSet.pop();
     entries.push(entry);
-    _.each(entry["in"].reverse(), handleIn(entry));
+    _.each(entry['in'].reverse(), handleIn(entry));
     _.each(entry.out, handleOut(entry));
   }
 
   return _.chain(entries).filter(function (entry) {
     return !entry.merged;
   }).map(function (entry) {
-    return _.pick(entry, ["vs", "i", "barycenter", "weight"]);
+    return _.pick(entry, ['vs', 'i', 'barycenter', 'weight']);
   }).value();
 }
 
@@ -2520,7 +2522,7 @@ module.exports = sort;
 
 function sort(entries, biasRight) {
   var parts = util.partition(entries, function (entry) {
-    return _.has(entry, "barycenter");
+    return _.has(entry, 'barycenter');
   });
   var sortable = parts.lhs,
       unsortable = _.sortBy(parts.rhs, function (entry) {
@@ -2637,7 +2639,7 @@ function buildLayerGraph(g, rank, relationship) {
         result.setEdge(u, v, { weight: g.edge(e).weight + weight });
       });
 
-      if (_.has(node, "minRank")) {
+      if (_.has(node, 'minRank')) {
         result.setNode(v, {
           borderLeft: node.borderLeft[rank],
           borderRight: node.borderRight[rank]
@@ -2651,7 +2653,7 @@ function buildLayerGraph(g, rank, relationship) {
 
 function createRootNode(g) {
   var v;
-  while (g.hasNode(v = _.uniqueId("_root"))) {}
+  while (g.hasNode(v = _.uniqueId('_root'))) {}
   return v;
 }
 
@@ -2780,26 +2782,25 @@ module.exports = {
   alignCoordinates: alignCoordinates,
   findSmallestWidthAlignment: findSmallestWidthAlignment,
   balance: balance
-};
 
-/*
- * Marks all edges in the graph with a type-1 conflict with the "type1Conflict"
- * property. A type-1 conflict is one where a non-inner segment crosses an
- * inner segment. An inner segment is an edge with both incident nodes marked
- * with the "dummy" property.
- *
- * This algorithm scans layer by layer, starting with the second, for type-1
- * conflicts between the current layer and the previous layer. For each layer
- * it scans the nodes from left to right until it reaches one that is incident
- * on an inner segment. It then scans predecessors to determine if they have
- * edges that cross that inner segment. At the end a final scan is done for all
- * nodes on the current rank to see if they cross the last visited inner
- * segment.
- *
- * This algorithm (safely) assumes that a dummy node will only be incident on a
- * single node in the layers being scanned.
- */
-function findType1Conflicts(g, layering) {
+  /*
+   * Marks all edges in the graph with a type-1 conflict with the "type1Conflict"
+   * property. A type-1 conflict is one where a non-inner segment crosses an
+   * inner segment. An inner segment is an edge with both incident nodes marked
+   * with the "dummy" property.
+   *
+   * This algorithm scans layer by layer, starting with the second, for type-1
+   * conflicts between the current layer and the previous layer. For each layer
+   * it scans the nodes from left to right until it reaches one that is incident
+   * on an inner segment. It then scans predecessors to determine if they have
+   * edges that cross that inner segment. At the end a final scan is done for all
+   * nodes on the current rank to see if they cross the last visited inner
+   * segment.
+   *
+   * This algorithm (safely) assumes that a dummy node will only be incident on a
+   * single node in the layers being scanned.
+   */
+};function findType1Conflicts(g, layering) {
   var conflicts = {};
 
   function visitLayer(prevLayer, layer) {
@@ -2864,7 +2865,7 @@ function findType2Conflicts(g, layering) {
         southPos = 0;
 
     _.each(south, function (v, southLookahead) {
-      if (g.node(v).dummy === "border") {
+      if (g.node(v).dummy === 'border') {
         var predecessors = g.predecessors(v);
         if (predecessors.length) {
           nextNorthPos = g.node(predecessors[0]).order;
@@ -2984,7 +2985,7 @@ function horizontalCompaction(g, layering, root, align, reverseSep) {
   }
   _.each(blockG.nodes(), pass1);
 
-  var borderType = reverseSep ? "borderLeft" : "borderRight";
+  var borderType = reverseSep ? 'borderLeft' : 'borderRight';
   function pass2(v) {
     if (visited[v] !== 2) {
       visited[v]++;
@@ -3056,14 +3057,14 @@ function alignCoordinates(xss, alignTo) {
   var alignToMin = _.min(alignTo),
       alignToMax = _.max(alignTo);
 
-  _.each(["u", "d"], function (vert) {
-    _.each(["l", "r"], function (horiz) {
+  _.each(['u', 'd'], function (vert) {
+    _.each(['l', 'r'], function (horiz) {
       var alignment = vert + horiz,
           xs = xss[alignment],
           delta;
       if (xs === alignTo) return;
 
-      delta = horiz === "l" ? alignToMin - _.min(xs) : alignToMax - _.max(xs);
+      delta = horiz === 'l' ? alignToMin - _.min(xs) : alignToMax - _.max(xs);
 
       if (delta) {
         xss[alignment] = _.mapValues(xs, function (x) {
@@ -3091,19 +3092,19 @@ function positionX(g) {
 
   var xss = {},
       adjustedLayering;
-  _.each(["u", "d"], function (vert) {
-    adjustedLayering = vert === "u" ? layering : _.values(layering).reverse();
-    _.each(["l", "r"], function (horiz) {
-      if (horiz === "r") {
+  _.each(['u', 'd'], function (vert) {
+    adjustedLayering = vert === 'u' ? layering : _.values(layering).reverse();
+    _.each(['l', 'r'], function (horiz) {
+      if (horiz === 'r') {
         adjustedLayering = _.map(adjustedLayering, function (inner) {
           return _.values(inner).reverse();
         });
       }
 
-      var neighborFn = _.bind(vert === "u" ? g.predecessors : g.successors, g);
+      var neighborFn = _.bind(vert === 'u' ? g.predecessors : g.successors, g);
       var align = verticalAlignment(g, adjustedLayering, conflicts, neighborFn);
-      var xs = horizontalCompaction(g, adjustedLayering, align.root, align.align, horiz === "r");
-      if (horiz === "r") {
+      var xs = horizontalCompaction(g, adjustedLayering, align.root, align.align, horiz === 'r');
+      if (horiz === 'r') {
         xs = _.mapValues(xs, function (x) {
           return -x;
         });
@@ -3125,11 +3126,11 @@ function sep(nodeSep, edgeSep, reverseSep) {
         delta;
 
     sum += vLabel.width / 2;
-    if (_.has(vLabel, "labelpos")) {
+    if (_.has(vLabel, 'labelpos')) {
       switch (vLabel.labelpos.toLowerCase()) {
-        case "l":
+        case 'l':
           delta = -vLabel.width / 2;break;
-        case "r":
+        case 'r':
           delta = vLabel.width / 2;break;
       }
     }
@@ -3142,11 +3143,11 @@ function sep(nodeSep, edgeSep, reverseSep) {
     sum += (wLabel.dummy ? edgeSep : nodeSep) / 2;
 
     sum += wLabel.width / 2;
-    if (_.has(wLabel, "labelpos")) {
+    if (_.has(wLabel, 'labelpos')) {
       switch (wLabel.labelpos.toLowerCase()) {
-        case "l":
+        case 'l':
           delta = wLabel.width / 2;break;
-        case "r":
+        case 'r':
           delta = -wLabel.width / 2;break;
       }
     }
@@ -3176,17 +3177,16 @@ var _ = __webpack_require__(0),
 
 module.exports = {
   debugOrdering: debugOrdering
-};
 
-/* istanbul ignore next */
-function debugOrdering(g) {
+  /* istanbul ignore next */
+};function debugOrdering(g) {
   var layerMatrix = util.buildLayerMatrix(g);
 
   var h = new Graph({ compound: true, multigraph: true }).setGraph({});
 
   _.each(g.nodes(), function (v) {
     h.setNode(v, { label: v });
-    h.setParent(v, "layer" + g.node(v).rank);
+    h.setParent(v, 'layer' + g.node(v).rank);
   });
 
   _.each(g.edges(), function (e) {
@@ -3194,10 +3194,10 @@ function debugOrdering(g) {
   });
 
   _.each(layerMatrix, function (layer, i) {
-    var layerV = "layer" + i;
-    h.setNode(layerV, { rank: "same" });
+    var layerV = 'layer' + i;
+    h.setNode(layerV, { rank: 'same' });
     _.reduce(layer, function (u, v) {
-      h.setEdge(u, v, { style: "invis" });
+      h.setEdge(u, v, { style: 'invis' });
       return v;
     });
   });
@@ -3212,7 +3212,7 @@ function debugOrdering(g) {
 "use strict";
 
 
-module.exports = "0.7.8";
+module.exports = '0.7.8';
 
 /***/ })
 /******/ ]);

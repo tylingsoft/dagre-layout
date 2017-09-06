@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 /* global chai, dagre */
 
 // These are smoke tests to make sure the bundles look like they are working
