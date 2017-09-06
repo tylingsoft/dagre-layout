@@ -46,14 +46,14 @@ describe('position/bk', function () {
       g.setEdge('b', 'd')
 
       var conflicts = findType1Conflicts(g, layering)
-      expect(hasConflict(conflicts, 'a', 'c')).to.be.false
-      expect(hasConflict(conflicts, 'b', 'd')).to.be.false
+      expect(hasConflict(conflicts, 'a', 'c')).to.equal(false)
+      expect(hasConflict(conflicts, 'b', 'd')).to.equal(false)
     })
 
     it('does not mark type-0 conflicts (no dummies)', function () {
       var conflicts = findType1Conflicts(g, layering)
-      expect(hasConflict(conflicts, 'a', 'd')).to.be.false
-      expect(hasConflict(conflicts, 'b', 'c')).to.be.false
+      expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
+      expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
     })
 
     _.each(['a', 'b', 'c', 'd'], function (v) {
@@ -61,8 +61,8 @@ describe('position/bk', function () {
         g.node(v).dummy = true
 
         var conflicts = findType1Conflicts(g, layering)
-        expect(hasConflict(conflicts, 'a', 'd')).to.be.false
-        expect(hasConflict(conflicts, 'b', 'c')).to.be.false
+        expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
+        expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
       })
     })
 
@@ -76,11 +76,11 @@ describe('position/bk', function () {
 
         var conflicts = findType1Conflicts(g, layering)
         if (v === 'a' || v === 'd') {
-          expect(hasConflict(conflicts, 'a', 'd')).to.be.true
-          expect(hasConflict(conflicts, 'b', 'c')).to.be.false
+          expect(hasConflict(conflicts, 'a', 'd')).to.equal(true)
+          expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
         } else {
-          expect(hasConflict(conflicts, 'a', 'd')).to.be.false
-          expect(hasConflict(conflicts, 'b', 'c')).to.be.true
+          expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
+          expect(hasConflict(conflicts, 'b', 'c')).to.equal(true)
         }
       })
     })
@@ -91,8 +91,8 @@ describe('position/bk', function () {
       })
 
       var conflicts = findType1Conflicts(g, layering)
-      expect(hasConflict(conflicts, 'a', 'd')).to.be.false
-      expect(hasConflict(conflicts, 'b', 'c')).to.be.false
+      expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
+      expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
       findType1Conflicts(g, layering)
     })
   })
@@ -124,8 +124,8 @@ describe('position/bk', function () {
       })
 
       var conflicts = findType2Conflicts(g, layering)
-      expect(hasConflict(conflicts, 'a', 'd')).to.be.true
-      expect(hasConflict(conflicts, 'b', 'c')).to.be.false
+      expect(hasConflict(conflicts, 'a', 'd')).to.equal(true)
+      expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
       findType1Conflicts(g, layering)
     })
 
@@ -139,8 +139,8 @@ describe('position/bk', function () {
       })
 
       var conflicts = findType2Conflicts(g, layering)
-      expect(hasConflict(conflicts, 'a', 'd')).to.be.false
-      expect(hasConflict(conflicts, 'b', 'c')).to.be.true
+      expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
+      expect(hasConflict(conflicts, 'b', 'c')).to.equal(true)
       findType1Conflicts(g, layering)
     })
   })
@@ -149,16 +149,16 @@ describe('position/bk', function () {
     it('can test for a type-1 conflict regardless of edge orientation', function () {
       var conflicts = {}
       addConflict(conflicts, 'b', 'a')
-      expect(hasConflict(conflicts, 'a', 'b')).to.be.true
-      expect(hasConflict(conflicts, 'b', 'a')).to.be.true
+      expect(hasConflict(conflicts, 'a', 'b')).to.equal(true)
+      expect(hasConflict(conflicts, 'b', 'a')).to.equal(true)
     })
 
     it('works for multiple conflicts with the same node', function () {
       var conflicts = {}
       addConflict(conflicts, 'a', 'b')
       addConflict(conflicts, 'a', 'c')
-      expect(hasConflict(conflicts, 'a', 'b')).to.be.true
-      expect(hasConflict(conflicts, 'a', 'c')).to.be.true
+      expect(hasConflict(conflicts, 'a', 'b')).to.equal(true)
+      expect(hasConflict(conflicts, 'a', 'c')).to.equal(true)
     })
   })
 

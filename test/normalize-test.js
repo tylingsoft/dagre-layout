@@ -208,7 +208,7 @@ describe('normalize', function () {
 
       normalize.undo(g)
 
-      expect(g.hasEdge('a', 'b')).to.be.false
+      expect(g.hasEdge('a', 'b')).to.equal(false)
       expect(g.edge('a', 'b', 'bar').points).eqls([{ x: 5, y: 10 }])
       expect(g.edge('a', 'b', 'foo').points).eqls([{ x: 15, y: 20 }])
     })
