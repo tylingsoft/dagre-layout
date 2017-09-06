@@ -20,7 +20,7 @@ describe('normalize', function () {
 
       normalize.run(g)
 
-      expect(__.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
+      expect(_.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
       expect(g.node('a').rank).to.equal(0)
       expect(g.node('b').rank).to.equal(1)
     })
@@ -91,7 +91,7 @@ describe('normalize', function () {
       normalize.run(g)
       normalize.undo(g)
 
-      expect(__.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
+      expect(_.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
       expect(g.node('a').rank).to.equal(0)
       expect(g.node('b').rank).to.equal(2)
     })

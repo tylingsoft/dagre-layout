@@ -295,7 +295,7 @@ describe('layout', function () {
 
 function extractCoordinates (g) {
   const nodes = g.nodes()
-  return __.zipObject(nodes, __.map(nodes, function (v) {
+  return __.zipObject(nodes, _.map(nodes, function (v) {
     return __.pick(g.node(v), ['x', 'y'])
   }))
 }

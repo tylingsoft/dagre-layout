@@ -30,7 +30,7 @@ describe('acyclic', function () {
           g.setPath(['a', 'b', 'd'])
           g.setPath(['a', 'c', 'd'])
           acyclic.run(g)
-          const results = __.map(g.edges(), stripLabel)
+          const results = _.map(g.edges(), stripLabel)
           expect(__.sortByAll(results, ['v', 'w'])).to.eql([
             { v: 'a', w: 'b' },
             { v: 'a', w: 'c' },
