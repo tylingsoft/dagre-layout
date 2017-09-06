@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  addSubgraphConstraints = require('../../lib/order/add-subgraph-constraints')
+const _ = require('lodash')
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const addSubgraphConstraints = require('../../lib/order/add-subgraph-constraints')
 
 describe('order/addSubgraphConstraints', function () {
   var g, cg

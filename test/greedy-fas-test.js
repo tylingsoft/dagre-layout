@@ -1,9 +1,9 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('./chai').expect,
-  Graph = require('graphlib').Graph,
-  findCycles = require('graphlib').alg.findCycles,
-  greedyFAS = require('../lib/greedy-fas')
+const _ = require('lodash')
+const expect = require('./chai').expect
+const Graph = require('graphlib').Graph
+const findCycles = require('graphlib').alg.findCycles
+const greedyFAS = require('../lib/greedy-fas')
 
 describe('greedyFAS', function () {
   var g
@@ -91,8 +91,8 @@ describe('greedyFAS', function () {
 })
 
 function checkFAS (g, fas) {
-  var n = g.nodeCount(),
-    m = g.edgeCount()
+  const n = g.nodeCount()
+  const m = g.edgeCount()
   _.each(fas, function (edge) {
     g.removeEdge(edge.v, edge.w)
   })

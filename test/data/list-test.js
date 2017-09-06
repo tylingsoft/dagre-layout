@@ -1,6 +1,6 @@
 /* eslint-env mocha */
-var expect = require('../chai').expect,
-  List = require('../../lib/data/list')
+const expect = require('../chai').expect
+const List = require('../../lib/data/list')
 
 describe('data.List', function () {
   var list
@@ -21,8 +21,8 @@ describe('data.List', function () {
     })
 
     it('unlinks and returns multiple entries in FIFO order', function () {
-      var obj1 = {},
-        obj2 = {}
+      const obj1 = {}
+      const obj2 = {}
       list.enqueue(obj1)
       list.enqueue(obj2)
 
@@ -31,8 +31,8 @@ describe('data.List', function () {
     })
 
     it('unlinks and relinks an entry if it is re-enqueued', function () {
-      var obj1 = {},
-        obj2 = {}
+      const obj1 = {}
+      const obj2 = {}
       list.enqueue(obj1)
       list.enqueue(obj2)
       list.enqueue(obj1)
@@ -42,8 +42,8 @@ describe('data.List', function () {
     })
 
     it('unlinks and relinks an entry if it is enqueued on another list', function () {
-      var obj = {},
-        list2 = new List()
+      const obj = {}
+      const list2 = new List()
       list.enqueue(obj)
       list2.enqueue(obj)
 

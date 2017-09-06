@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var expect = require('./chai').expect,
-  position = require('../lib/position'),
-  Graph = require('graphlib').Graph
+const expect = require('./chai').expect
+const position = require('../lib/position')
+const Graph = require('graphlib').Graph
 
 describe('position', function () {
   var g

@@ -7,7 +7,7 @@ const longestPath = rankUtil.longestPath
 
 describe('rank/util', function () {
   describe('longestPath', function () {
-    var g
+    let g
 
     beforeEach(function () {
       g = new Graph()

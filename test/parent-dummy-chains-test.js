@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var expect = require('./chai').expect,
-  Graph = require('graphlib').Graph,
-  parentDummyChains = require('../lib/parent-dummy-chains')
+const expect = require('./chai').expect
+const Graph = require('graphlib').Graph
+const parentDummyChains = require('../lib/parent-dummy-chains')
 
 describe('parentDummyChains', function () {
   var g

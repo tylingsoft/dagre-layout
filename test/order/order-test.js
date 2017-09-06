@@ -1,10 +1,10 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  order = require('../../lib/order'),
-  crossCount = require('../../lib/order/cross-count'),
-  util = require('../../lib/util')
+const _ = require('lodash')
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const order = require('../../lib/order')
+const crossCount = require('../../lib/order/cross-count')
+const util = require('../../lib/util')
 
 describe('order', function () {
   var g

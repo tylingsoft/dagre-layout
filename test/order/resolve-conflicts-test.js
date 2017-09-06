@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  resolveConflicts = require('../../lib/order/resolve-conflicts')
+const _ = require('lodash')
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const resolveConflicts = require('../../lib/order/resolve-conflicts')
 
 describe('order/resolveConflicts', function () {
   var cg

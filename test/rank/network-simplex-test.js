@@ -1,17 +1,16 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  Graph = require('graphlib').Graph,
-  networkSimplex = require('../../lib/rank/network-simplex'),
-  longestPath = require('../../lib/rank/util').longestPath,
-  initLowLimValues = networkSimplex.initLowLimValues,
-  initCutValues = networkSimplex.initCutValues,
-  calcCutValue = networkSimplex.calcCutValue,
-  leaveEdge = networkSimplex.leaveEdge,
-  enterEdge = networkSimplex.enterEdge,
-  exchangeEdges = networkSimplex.exchangeEdges,
-  normalizeRanks = require('../../lib/util').normalizeRanks
+const _ = require('lodash')
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const networkSimplex = require('../../lib/rank/network-simplex')
+const longestPath = require('../../lib/rank/util').longestPath
+const initLowLimValues = networkSimplex.initLowLimValues
+const initCutValues = networkSimplex.initCutValues
+const calcCutValue = networkSimplex.calcCutValue
+const leaveEdge = networkSimplex.leaveEdge
+const enterEdge = networkSimplex.enterEdge
+const exchangeEdges = networkSimplex.exchangeEdges
+const normalizeRanks = require('../../lib/util').normalizeRanks
 
 describe('network simplex', function () {
   var g, t, gansnerGraph, gansnerTree
@@ -218,11 +217,11 @@ describe('network simplex', function () {
 
       initLowLimValues(g, 'a')
 
-      var a = g.node('a'),
-        b = g.node('b'),
-        c = g.node('c'),
-        d = g.node('d'),
-        e = g.node('e')
+      const a = g.node('a')
+      const b = g.node('b')
+      const c = g.node('c')
+      const d = g.node('d')
+      const e = g.node('e')
 
       expect(_.sortBy(_.map(g.nodes(), function (v) { return g.node(v).lim })))
         .to.eql(_.range(1, 6))

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  crossCount = require('../../lib/order/cross-count')
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const crossCount = require('../../lib/order/cross-count')
 
 describe('crossCount', function () {
   var g

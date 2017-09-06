@@ -1,6 +1,6 @@
 /* eslint-env mocha */
-var expect = require('../chai').expect,
-  sort = require('../../lib/order/sort')
+const expect = require('../chai').expect
+const sort = require('../../lib/order/sort')
 
 describe('sort', function () {
   it('sorts nodes by barycenter', function () {

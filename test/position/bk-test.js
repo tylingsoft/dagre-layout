@@ -1,19 +1,19 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('../chai').expect,
-  buildLayerMatrix = require('../../lib/util').buildLayerMatrix,
-  bk = require('../../lib/position/bk'),
-  findType1Conflicts = bk.findType1Conflicts,
-  findType2Conflicts = bk.findType2Conflicts,
-  addConflict = bk.addConflict,
-  hasConflict = bk.hasConflict,
-  verticalAlignment = bk.verticalAlignment,
-  horizontalCompaction = bk.horizontalCompaction,
-  alignCoordinates = bk.alignCoordinates,
-  balance = bk.balance,
-  findSmallestWidthAlignment = bk.findSmallestWidthAlignment,
-  positionX = bk.positionX,
-  Graph = require('graphlib').Graph
+const _ = require('lodash')
+const expect = require('../chai').expect
+const buildLayerMatrix = require('../../lib/util').buildLayerMatrix
+const bk = require('../../lib/position/bk')
+const findType1Conflicts = bk.findType1Conflicts
+const findType2Conflicts = bk.findType2Conflicts
+const addConflict = bk.addConflict
+const hasConflict = bk.hasConflict
+const verticalAlignment = bk.verticalAlignment
+const horizontalCompaction = bk.horizontalCompaction
+const alignCoordinates = bk.alignCoordinates
+const balance = bk.balance
+const findSmallestWidthAlignment = bk.findSmallestWidthAlignment
+const positionX = bk.positionX
+const Graph = require('graphlib').Graph
 
 describe('position/bk', function () {
   var g
@@ -167,8 +167,8 @@ describe('position/bk', function () {
       g.setNode('a', { rank: 0, order: 0 })
       g.setNode('b', { rank: 1, order: 0 })
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
@@ -182,8 +182,8 @@ describe('position/bk', function () {
       g.setNode('b', { rank: 1, order: 0 })
       g.setEdge('a', 'b')
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
@@ -199,8 +199,8 @@ describe('position/bk', function () {
       g.setEdge('a', 'c')
       g.setEdge('b', 'c')
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
@@ -220,8 +220,8 @@ describe('position/bk', function () {
       g.setEdge('z', 'c')
       g.setEdge('b', 'c')
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
@@ -237,8 +237,8 @@ describe('position/bk', function () {
       g.setEdge('a', 'c')
       g.setEdge('b', 'c')
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       addConflict(conflicts, 'a', 'c')
 
@@ -258,8 +258,8 @@ describe('position/bk', function () {
       g.setEdge('b', 'c')
       g.setEdge('b', 'd')
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       // c will align with b, so d will not be able to align with a, because
@@ -279,8 +279,8 @@ describe('position/bk', function () {
       g.setEdge('b', 'd')
       g.setEdge('c', 'd')
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
@@ -297,8 +297,8 @@ describe('position/bk', function () {
       g.setPath(['a', 'b', 'd'])
       g.setPath(['a', 'c', 'd'])
 
-      var layering = buildLayerMatrix(g),
-        conflicts = {}
+      const layering = buildLayerMatrix(g)
+      const conflicts = {}
 
       var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
@@ -310,8 +310,8 @@ describe('position/bk', function () {
 
   describe('horizonalCompaction', function () {
     it('places the center of a single node graph at origin (0,0)', function () {
-      var root = { a: 'a' },
-        align = { a: 'a' }
+      const root = { a: 'a' }
+      const align = { a: 'a' }
       g.setNode('a', { rank: 0, order: 0 })
 
       var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
@@ -319,8 +319,8 @@ describe('position/bk', function () {
     })
 
     it('separates adjacent nodes by specified node separation', function () {
-      var root = { a: 'a', b: 'b' },
-        align = { a: 'a', b: 'b' }
+      const root = { a: 'a', b: 'b' }
+      const align = { a: 'a', b: 'b' }
       g.graph().nodesep = 100
       g.setNode('a', { rank: 0, order: 0, width: 100 })
       g.setNode('b', { rank: 0, order: 1, width: 200 })
@@ -331,8 +331,8 @@ describe('position/bk', function () {
     })
 
     it('separates adjacent edges by specified node separation', function () {
-      var root = { a: 'a', b: 'b' },
-        align = { a: 'a', b: 'b' }
+      const root = { a: 'a', b: 'b' }
+      const align = { a: 'a', b: 'b' }
       g.graph().edgesep = 20
       g.setNode('a', { rank: 0, order: 0, width: 100, dummy: true })
       g.setNode('b', { rank: 0, order: 1, width: 200, dummy: true })
@@ -343,8 +343,8 @@ describe('position/bk', function () {
     })
 
     it('aligns the centers of nodes in the same block', function () {
-      var root = { a: 'a', b: 'a' },
-        align = { a: 'b', b: 'a' }
+      const root = { a: 'a', b: 'a' }
+      const align = { a: 'b', b: 'a' }
       g.setNode('a', { rank: 0, order: 0, width: 100 })
       g.setNode('b', { rank: 1, order: 0, width: 200 })
 
@@ -354,8 +354,8 @@ describe('position/bk', function () {
     })
 
     it('separates blocks with the appropriate separation', function () {
-      var root = { a: 'a', b: 'a', c: 'c' },
-        align = { a: 'b', b: 'a', c: 'c' }
+      const root = { a: 'a', b: 'a', c: 'c' }
+      const align = { a: 'b', b: 'a', c: 'c' }
       g.graph().nodesep = 75
       g.setNode('a', { rank: 0, order: 0, width: 100 })
       g.setNode('b', { rank: 1, order: 1, width: 200 })
@@ -368,8 +368,8 @@ describe('position/bk', function () {
     })
 
     it('separates classes with the appropriate separation', function () {
-      var root = { a: 'a', b: 'b', c: 'c', d: 'b' },
-        align = { a: 'a', b: 'd', c: 'c', d: 'b' }
+      const root = { a: 'a', b: 'b', c: 'c', d: 'b' }
+      const align = { a: 'a', b: 'd', c: 'c', d: 'b' }
       g.graph().nodesep = 75
       g.setNode('a', { rank: 0, order: 0, width: 100 })
       g.setNode('b', { rank: 0, order: 1, width: 200 })
@@ -384,8 +384,8 @@ describe('position/bk', function () {
     })
 
     it('shifts classes by max sep from the adjacent block #1', function () {
-      var root = { a: 'a', b: 'b', c: 'a', d: 'b' },
-        align = { a: 'c', b: 'd', c: 'a', d: 'b' }
+      const root = { a: 'a', b: 'b', c: 'a', d: 'b' }
+      const align = { a: 'c', b: 'd', c: 'a', d: 'b' }
       g.graph().nodesep = 75
       g.setNode('a', { rank: 0, order: 0, width: 50 })
       g.setNode('b', { rank: 0, order: 1, width: 150 })
@@ -400,8 +400,8 @@ describe('position/bk', function () {
     })
 
     it('shifts classes by max sep from the adjacent block #2', function () {
-      var root = { a: 'a', b: 'b', c: 'a', d: 'b' },
-        align = { a: 'c', b: 'd', c: 'a', d: 'b' }
+      const root = { a: 'a', b: 'b', c: 'a', d: 'b' }
+      const align = { a: 'c', b: 'd', c: 'a', d: 'b' }
       g.graph().nodesep = 75
       g.setNode('a', { rank: 0, order: 0, width: 50 })
       g.setNode('b', { rank: 0, order: 1, width: 70 })
@@ -416,8 +416,8 @@ describe('position/bk', function () {
     })
 
     it('cascades class shift', function () {
-      var root = { a: 'a', b: 'b', c: 'c', d: 'd', e: 'b', f: 'f', g: 'd' },
-        align = { a: 'a', b: 'e', c: 'c', d: 'g', e: 'b', f: 'f', g: 'd' }
+      const root = { a: 'a', b: 'b', c: 'c', d: 'd', e: 'b', f: 'f', g: 'd' }
+      const align = { a: 'a', b: 'e', c: 'c', d: 'g', e: 'b', f: 'f', g: 'd' }
       g.graph().nodesep = 75
       g.setNode('a', { rank: 0, order: 0, width: 50 })
       g.setNode('b', { rank: 0, order: 1, width: 50 })
@@ -439,8 +439,8 @@ describe('position/bk', function () {
     })
 
     it('handles labelpos = l', function () {
-      var root = { a: 'a', b: 'b', c: 'c' },
-        align = { a: 'a', b: 'b', c: 'c' }
+      const root = { a: 'a', b: 'b', c: 'c' }
+      const align = { a: 'a', b: 'b', c: 'c' }
       g.graph().edgesep = 50
       g.setNode('a', { rank: 0, order: 0, width: 100, dummy: 'edge' })
       g.setNode('b', {
@@ -459,8 +459,8 @@ describe('position/bk', function () {
     })
 
     it('handles labelpos = c', function () {
-      var root = { a: 'a', b: 'b', c: 'c' },
-        align = { a: 'a', b: 'b', c: 'c' }
+      const root = { a: 'a', b: 'b', c: 'c' }
+      const align = { a: 'a', b: 'b', c: 'c' }
       g.graph().edgesep = 50
       g.setNode('a', { rank: 0, order: 0, width: 100, dummy: 'edge' })
       g.setNode('b', {
@@ -479,8 +479,8 @@ describe('position/bk', function () {
     })
 
     it('handles labelpos = r', function () {
-      var root = { a: 'a', b: 'b', c: 'c' },
-        align = { a: 'a', b: 'b', c: 'c' }
+      const root = { a: 'a', b: 'b', c: 'c' }
+      const align = { a: 'a', b: 'b', c: 'c' }
       g.graph().edgesep = 50
       g.setNode('a', { rank: 0, order: 0, width: 100, dummy: 'edge' })
       g.setNode('b', {
@@ -628,8 +628,8 @@ describe('position/bk', function () {
       g.setEdge('a', 'b')
       g.setEdge('a', 'c')
 
-      var pos = positionX(g),
-        a = pos.a
+      const pos = positionX(g)
+      const a = pos.a
       expect(pos).to.eql({ a: a, b: a - (25 + 5), c: a + (25 + 5) })
     })
 
@@ -641,9 +641,9 @@ describe('position/bk', function () {
       g.setNode('d', { rank: 1, order: 1, width: 80 })
       g.setEdge('b', 'c')
 
-      var pos = positionX(g),
-        b = pos.b,
-        c = b
+      const pos = positionX(g)
+      const b = pos.b
+      const c = b
       expect(pos).to.eql({
         a: b - 60 / 2 - 10 - 50 / 2,
         b: b,
@@ -661,9 +661,9 @@ describe('position/bk', function () {
       g.setEdge('b', 'c')
       g.setEdge('a', 'd')
 
-      var pos = positionX(g),
-        a = pos.a,
-        d = a
+      const pos = positionX(g)
+      const a = pos.a
+      const d = a
       expect(pos).to.eql({
         a: a,
         b: a + 50 / 2 + 10 + 60 / 2,

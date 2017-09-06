@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('./chai').expect,
-  layout = require('../index').layout,
-  Graph = require('graphlib').Graph
+const _ = require('lodash')
+const expect = require('./chai').expect
+const layout = require('../index').layout
+const Graph = require('graphlib').Graph
 
 describe('layout', function () {
   var g
@@ -134,7 +134,7 @@ describe('layout', function () {
     layout(g)
     expect(extractCoordinates(g)).to.eql({
       a: { x: 100 / 2, y: 100 / 2 },
-      b: { x: 100 / 2, y: 100 + 200 + 100 / 2}
+      b: { x: 100 / 2, y: 100 + 200 + 100 / 2 }
     })
     // One arrow should point down, one up
     expect(g.edge('a', 'b').points[1].y).gt(g.edge('a', 'b').points[0].y)
@@ -181,8 +181,8 @@ describe('layout', function () {
         g.setNode('a', { width: 100, height: 100 })
         g.setEdge('a', 'a', { width: 50, height: 50 })
         layout(g)
-        var nodeA = g.node('a'),
-          points = g.edge('a', 'a').points
+        const nodeA = g.node('a')
+        const points = g.edge('a', 'a').points
         expect(points).to.have.length(7)
         _.each(points, function (point) {
           if (rankdir !== 'LR' && rankdir !== 'RL') {

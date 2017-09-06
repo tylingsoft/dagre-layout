@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('./chai').expect,
-  normalize = require('../lib/normalize'),
-  Graph = require('graphlib').Graph
+const _ = require('lodash')
+const expect = require('./chai').expect
+const normalize = require('../lib/normalize')
+const Graph = require('graphlib').Graph
 
 describe('normalize', function () {
   var g
@@ -63,8 +63,8 @@ describe('normalize', function () {
 
       normalize.run(g)
 
-      var labelV = g.successors(g.successors('a')[0])[0],
-        labelNode = g.node(labelV)
+      const labelV = g.successors(g.successors('a')[0])[0]
+      const labelNode = g.node(labelV)
       expect(labelNode.width).to.equal(20)
       expect(labelNode.height).to.equal(10)
     })

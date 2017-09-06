@@ -5,11 +5,11 @@ const rank = require('../../lib/rank')
 const Graph = require('graphlib').Graph
 
 describe('rank', function () {
-  var RANKERS = [
-      'longest-path', 'tight-tree',
-      'network-simplex', 'unknown-should-still-work'
-    ],
-    g
+  const RANKERS = [
+    'longest-path', 'tight-tree',
+    'network-simplex', 'unknown-should-still-work'
+  ]
+  let g
 
   beforeEach(function () {
     g = new Graph()
@@ -27,8 +27,8 @@ describe('rank', function () {
         g.graph().ranker = ranker
         rank(g)
         _.each(g.edges(), function (e) {
-          var vRank = g.node(e.v).rank,
-            wRank = g.node(e.w).rank
+          const vRank = g.node(e.v).rank
+          const wRank = g.node(e.w).rank
           expect(wRank - vRank).to.be.gte(g.edge(e).minlen)
         })
       })

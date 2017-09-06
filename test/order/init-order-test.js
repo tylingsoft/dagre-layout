@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  initOrder = require('../../lib/order/init-order')
+const _ = require('lodash')
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const initOrder = require('../../lib/order/init-order')
 
 describe('order/initOrder', function () {
   var g

@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var expect = require('./chai').expect,
-  Graph = require('graphlib').Graph,
-  components = require('graphlib').alg.components,
-  nestingGraph = require('../lib/nesting-graph')
+const expect = require('./chai').expect
+const Graph = require('graphlib').Graph
+const components = require('graphlib').alg.components
+const nestingGraph = require('../lib/nesting-graph')
 
 describe('rank/nestingGraph', function () {
   var g
@@ -28,8 +28,8 @@ describe('rank/nestingGraph', function () {
       g.setParent('a', 'sg1')
       nestingGraph.run(g)
 
-      var borderTop = g.node('sg1').borderTop,
-        borderBottom = g.node('sg1').borderBottom
+      const borderTop = g.node('sg1').borderTop
+      const borderBottom = g.node('sg1').borderBottom
       expect(borderTop).to.not.equal(undefined)
       expect(borderBottom).to.not.equal(undefined)
       expect(g.parent(borderTop)).to.equal('sg1')
@@ -47,10 +47,10 @@ describe('rank/nestingGraph', function () {
       g.setParent('a', 'sg2')
       nestingGraph.run(g)
 
-      var sg1Top = g.node('sg1').borderTop,
-        sg1Bottom = g.node('sg1').borderBottom,
-        sg2Top = g.node('sg2').borderTop,
-        sg2Bottom = g.node('sg2').borderBottom
+      const sg1Top = g.node('sg1').borderTop
+      const sg1Bottom = g.node('sg1').borderBottom
+      const sg2Top = g.node('sg2').borderTop
+      const sg2Bottom = g.node('sg2').borderBottom
       expect(sg1Top).to.not.equal(undefined)
       expect(sg1Bottom).to.not.equal(undefined)
       expect(sg2Top).to.not.equal(undefined)
@@ -70,8 +70,8 @@ describe('rank/nestingGraph', function () {
       g.setEdge('x', 'b', { weight: 200 })
       nestingGraph.run(g)
 
-      var top = g.node('sg').borderTop,
-        bot = g.node('sg').borderBottom
+      const top = g.node('sg').borderTop
+      const bot = g.node('sg').borderBottom
       expect(g.edge(top, 'x').weight).to.be.gt(300)
       expect(g.edge('x', bot).weight).to.be.gt(300)
     })
@@ -80,8 +80,8 @@ describe('rank/nestingGraph', function () {
       g.setParent('a', 'sg1')
       nestingGraph.run(g)
 
-      var root = g.graph().nestingRoot,
-        borderTop = g.node('sg1').borderTop
+      const root = g.graph().nestingRoot
+      const borderTop = g.node('sg1').borderTop
       expect(root).to.not.equal(undefined)
       expect(borderTop).to.not.equal(undefined)
       expect(g.outEdges(root, borderTop)).to.have.length(1)
@@ -165,11 +165,11 @@ describe('rank/nestingGraph', function () {
       // 6: close sg2
       // 7: close sg1
 
-      var root = g.graph().nestingRoot,
-        sg1Top = g.node('sg1').borderTop,
-        sg1Bot = g.node('sg1').borderBottom,
-        sg2Top = g.node('sg2').borderTop,
-        sg2Bot = g.node('sg2').borderBottom
+      const root = g.graph().nestingRoot
+      const sg1Top = g.node('sg1').borderTop
+      const sg1Bot = g.node('sg1').borderBottom
+      const sg2Top = g.node('sg2').borderTop
+      const sg2Bot = g.node('sg2').borderBottom
 
       expect(g.edge(root, sg1Top).minlen).equals(3)
       expect(g.edge(sg1Top, sg2Top).minlen).equals(1)
