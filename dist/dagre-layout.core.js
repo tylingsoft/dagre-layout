@@ -3215,5 +3215,5 @@ function debugOrdering(g) {
 module.exports = "0.7.7";
 
 /***/ })
-/******/ ])["default"];
+/******/ ]);
 });

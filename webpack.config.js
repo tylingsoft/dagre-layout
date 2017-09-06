@@ -10,8 +10,8 @@ export const configCreator = () => ({
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
     library: 'dagre',
-    libraryTarget: 'umd',
-    libraryExport: 'default'
+    libraryTarget: 'umd' // ,
+    // libraryExport: 'default'
   },
   module: {
     rules: [

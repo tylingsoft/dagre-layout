@@ -1,3 +1,6 @@
 - Replace browserify with webpack
 - Support Travis CI and coveralls.io
 - Replace jshint with standard style
+- Replace var with const/let
+- Replace require with import
+- Replace module.exports with export default
