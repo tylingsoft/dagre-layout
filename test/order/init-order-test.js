@@ -23,8 +23,8 @@ describe('order/initOrder', function () {
 
     const layering = initOrder(g)
     expect(layering[0]).to.eql(['a'])
-    expect(__.sortBy(layering[1])).to.eql(['b', 'e'])
-    expect(__.sortBy(layering[2])).to.eql(['c', 'd'])
+    expect(_.sortBy(layering[1])).to.eql(['b', 'e'])
+    expect(_.sortBy(layering[2])).to.eql(['c', 'd'])
   })
 
   it('assigns non-overlapping orders for each rank in a DAG', function () {
@@ -36,8 +36,8 @@ describe('order/initOrder', function () {
 
     const layering = initOrder(g)
     expect(layering[0]).to.eql(['a'])
-    expect(__.sortBy(layering[1])).to.eql(['b', 'c'])
-    expect(__.sortBy(layering[2])).to.eql(['d'])
+    expect(_.sortBy(layering[1])).to.eql(['b', 'c'])
+    expect(_.sortBy(layering[2])).to.eql(['d'])
   })
 
   it('does not assign an order to subgraph nodes', function () {

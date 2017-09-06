@@ -227,8 +227,8 @@ describe('network simplex', function () {
       const d = g.node('d')
       const e = g.node('e')
 
-      expect(__.sortBy(__.map(g.nodes(), function (v) { return g.node(v).lim })))
-        .to.eql(__.range(1, 6))
+      expect(_.sortBy(__.map(g.nodes(), function (v) { return g.node(v).lim })))
+        .to.eql(_.range(1, 6))
 
       expect(a).to.eql({ low: 1, lim: 5 })
 
@@ -267,8 +267,8 @@ describe('network simplex', function () {
       expect(t.edge('g', 'f').cutvalue).to.equal(0)
 
       // ensure lim numbers look right
-      const lims = __.sortBy(__.map(t.nodes(), function (v) { return t.node(v).lim }))
-      expect(lims).to.eql(__.range(1, 9))
+      const lims = _.sortBy(__.map(t.nodes(), function (v) { return t.node(v).lim }))
+      expect(lims).to.eql(_.range(1, 9))
     })
 
     it('updates ranks', function () {

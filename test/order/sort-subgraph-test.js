@@ -13,7 +13,7 @@ describe('order/sortSubgraph', function () {
     g = new Graph({ compound: true })
       .setDefaultNodeLabel(function () { return {} })
       .setDefaultEdgeLabel(function () { return { weight: 1 } })
-    __.each(__.range(5), function (v) { g.setNode(v, { order: v }) })
+    __.each(_.range(5), function (v) { g.setNode(v, { order: v }) })
     cg = new Graph()
   })
 

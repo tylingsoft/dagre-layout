@@ -84,7 +84,7 @@ describe('greedyFAS', function () {
     g.setEdge('a', 'b', 5, 'foo')
     g.setEdge('b', 'a', 2, 'bar')
     g.setEdge('b', 'a', 2, 'baz')
-    expect(__.sortBy(greedyFAS(g, weightFn(g)), 'name')).to.eql([
+    expect(_.sortBy(greedyFAS(g, weightFn(g)), 'name')).to.eql([
       { v: 'b', w: 'a', name: 'bar' },
       { v: 'b', w: 'a', name: 'baz' }
     ])

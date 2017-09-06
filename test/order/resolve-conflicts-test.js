@@ -17,7 +17,7 @@ describe('order/resolveConflicts', function () {
       { v: 'a', barycenter: 2, weight: 3 },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a'], i: 0, barycenter: 2, weight: 3 },
       { vs: ['b'], i: 1, barycenter: 1, weight: 2 }
     ])
@@ -29,7 +29,7 @@ describe('order/resolveConflicts', function () {
       { v: 'b', barycenter: 1, weight: 2 }
     ]
     cg.setEdge('b', 'a')
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a'], i: 0, barycenter: 2, weight: 3 },
       { vs: ['b'], i: 1, barycenter: 1, weight: 2 }
     ])
@@ -41,7 +41,7 @@ describe('order/resolveConflicts', function () {
       { v: 'b', barycenter: 1, weight: 2 }
     ]
     cg.setEdge('a', 'b')
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a', 'b'],
         i: 0,
         barycenter: (3 * 2 + 2 * 1) / (3 + 2),
@@ -58,7 +58,7 @@ describe('order/resolveConflicts', function () {
       { v: 'd', barycenter: 1, weight: 1 }
     ]
     cg.setPath(['a', 'b', 'c', 'd'])
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a', 'b', 'c', 'd'],
         i: 0,
         barycenter: (4 + 3 + 2 + 1) / 4,
@@ -110,7 +110,7 @@ describe('order/resolveConflicts', function () {
       { v: 'a' },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a'], i: 0 },
       { vs: ['b'], i: 1, barycenter: 1, weight: 2 }
     ])
@@ -122,7 +122,7 @@ describe('order/resolveConflicts', function () {
       { v: 'b', barycenter: 1, weight: 2 }
     ]
     cg.setEdge('a', 'b')
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a', 'b'], i: 0, barycenter: 1, weight: 2 }
     ])
   })
@@ -133,7 +133,7 @@ describe('order/resolveConflicts', function () {
       { v: 'b', barycenter: 1, weight: 2 }
     ]
     cg.setEdge('b', 'a')
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['b', 'a'], i: 0, barycenter: 1, weight: 2 }
     ])
   })
@@ -144,7 +144,7 @@ describe('order/resolveConflicts', function () {
       { v: 'b', barycenter: 1, weight: 2 }
     ]
     cg.setEdge('c', 'd')
-    expect(__.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
+    expect(_.sortBy(resolveConflicts(input, cg), 'vs')).eqls([
       { vs: ['a'], i: 0, barycenter: 2, weight: 3 },
       { vs: ['b'], i: 1, barycenter: 1, weight: 2 }
     ])

@@ -54,7 +54,7 @@ describe('order/addSubgraphConstraints', function () {
     g.setParent('g', 'sg5')
     g.setParent('sg5', 'sg4')
     addSubgraphConstraints(g, cg, vs)
-    expect(__.sortBy(cg.edges(), 'v')).eqls([
+    expect(_.sortBy(cg.edges(), 'v')).eqls([
       { v: 'sg1', w: 'sg4' },
       { v: 'sg2', w: 'sg3' }
     ])

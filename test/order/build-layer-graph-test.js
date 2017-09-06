@@ -111,7 +111,7 @@ describe('order/buildLayerGraph', function () {
 
     const lg = buildLayerGraph(g, 0, 'inEdges')
     const root = lg.graph().root
-    expect(__.sortBy(lg.children(root))).eqls(['c', 'sg'])
+    expect(_.sortBy(lg.children(root))).eqls(['c', 'sg'])
     expect(lg.parent('a')).equals('sg')
     expect(lg.parent('b')).equals('sg')
   })
