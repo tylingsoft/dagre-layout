@@ -1,7 +1,6 @@
-MOD = dagre
+MOD = dagre-layout
 
 YARN = yarn
-BROWSERIFY = ./node_modules/browserify/bin/cmd.js
 ISTANBUL = ./node_modules/istanbul/lib/cli.js
 JSHINT = ./node_modules/jshint/bin/jshint
 JSCS = ./node_modules/jscs/bin/jscs
@@ -13,19 +12,16 @@ ISTANBUL_OPTS = --dir $(COVERAGE_DIR) --report html
 JSHINT_OPTS = --reporter node_modules/jshint-stylish/stylish.js
 MOCHA_OPTS = -R dot
 
-BUILD_DIR = build
-COVERAGE_DIR = $(BUILD_DIR)/cov
+COVERAGE_DIR = coverage
 DIST_DIR = dist
 
 SRC_FILES = index.js lib/version.js $(shell find lib -type f -name '*.js')
 TEST_FILES = $(shell find test -type f -name '*.js' | grep -v 'bundle-test.js')
-BUILD_FILES = $(addprefix $(BUILD_DIR)/, \
+DIST_FILES = $(addprefix $(DIST_DIR)/, \
 						$(MOD).js $(MOD).min.js \
 						$(MOD).core.js $(MOD).core.min.js)
 
-DIRS = $(BUILD_DIR)
-
-.PHONY: all bench clean browser-test unit-test test dist
+.PHONY: all bench browser-test unit-test test dist
 
 all: unit-test
 
@@ -35,32 +31,23 @@ bench: test
 lib/version.js: package.json
 	@src/release/make-version.js > $@
 
-$(DIRS):
-	@mkdir -p $@
-
 test: unit-test browser-test
 
-unit-test: $(SRC_FILES) $(TEST_FILES) node_modules | $(BUILD_DIR)
+unit-test: $(SRC_FILES) $(TEST_FILES) node_modules
 	@$(ISTANBUL) cover $(ISTANBUL_OPTS) $(MOCHA) --dir $(COVERAGE_DIR) -- $(MOCHA_OPTS) $(TEST_FILES) || $(MOCHA) $(MOCHA_OPTS) $(TEST_FILES)
 	@$(JSHINT) $(JSHINT_OPTS) $(filter-out node_modules, $?)
 	@$(JSCS) $(filter-out node_modules, $?)
 
-browser-test: $(BUILD_DIR)/$(MOD).js
+browser-test:
 	$(KARMA) start --single-run $(KARMA_OPTS)
 
-$(BUILD_DIR)/$(MOD).js: index.js $(SRC_FILES) | unit-test
-	@$(BROWSERIFY) $< > $@ -s dagre
-
-$(BUILD_DIR)/$(MOD).min.js: $(BUILD_DIR)/$(MOD).js
+$(DIST_DIR)/$(MOD).min.js: $(DIST_DIR)/$(MOD).js
 	@$(UGLIFY) $< --comments '@license' > $@
 
-$(BUILD_DIR)/$(MOD).core.js: index.js $(SRC_FILES) | unit-test
-	@$(BROWSERIFY) $< > $@ --no-bundle-external -s dagre
-
-$(BUILD_DIR)/$(MOD).core.min.js: $(BUILD_DIR)/$(MOD).core.js
+$(DIST_DIR)/$(MOD).core.min.js: $(DIST_DIR)/$(MOD).core.js
 	@$(UGLIFY) $< --comments '@license' > $@
 
-dist: $(BUILD_FILES) | test
+dist: $(DIST_FILES) | test
 	@rm -rf $@
 	@mkdir -p $@
 	@cp $^ dist
@@ -70,9 +57,6 @@ release: dist
 	@echo Starting release...
 	@echo
 	@src/release/release.sh $(MOD) dist
-
-clean:
-	rm -rf $(BUILD_DIR)
 
 node_modules: package.json
 	@$(YARN) install
