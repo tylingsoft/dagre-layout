@@ -1,0 +1,40 @@
+import path from 'path'
+import nodeExternals from 'webpack-node-externals'
+
+export const configCreator = () => ({
+  target: 'web',
+  entry: {
+    'dagre-layout': './index.js'
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
+    library: 'dagre',
+    libraryTarget: 'umd',
+    libraryExport: 'default'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', { targets: { browsers: ['last 3 versions'] } }]
+            ]
+          }
+        }
+      }
+    ]
+  }
+})
+
+const config = configCreator()
+const coreConfig = configCreator()
+
+coreConfig.externals = [nodeExternals()]
+coreConfig.output.filename = '[name].core.js'
+
+export default [config, coreConfig]

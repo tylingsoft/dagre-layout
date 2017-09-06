@@ -1,1 +1,3 @@
 - Replace browserify with webpack
+- Support Travis CI and coveralls.io
+- Replace jshint with standard style
