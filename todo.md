@@ -1,4 +1,3 @@
 - Support Travis CI and coveralls.io
-- Replace var with const/let
 - Replace require with import
 - Replace module.exports with export default
