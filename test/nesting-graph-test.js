@@ -30,8 +30,8 @@ describe('rank/nestingGraph', function () {
 
       var borderTop = g.node('sg1').borderTop,
         borderBottom = g.node('sg1').borderBottom
-      expect(borderTop).to.exist
-      expect(borderBottom).to.exist
+      expect(borderTop).to.not.equal(undefined)
+      expect(borderBottom).to.not.equal(undefined)
       expect(g.parent(borderTop)).to.equal('sg1')
       expect(g.parent(borderBottom)).to.equal('sg1')
       expect(g.outEdges(borderTop, 'a')).to.have.length(1)
@@ -51,10 +51,10 @@ describe('rank/nestingGraph', function () {
         sg1Bottom = g.node('sg1').borderBottom,
         sg2Top = g.node('sg2').borderTop,
         sg2Bottom = g.node('sg2').borderBottom
-      expect(sg1Top).to.exist
-      expect(sg1Bottom).to.exist
-      expect(sg2Top).to.exist
-      expect(sg2Bottom).to.exist
+      expect(sg1Top).to.not.equal(undefined)
+      expect(sg1Bottom).to.not.equal(undefined)
+      expect(sg2Top).to.not.equal(undefined)
+      expect(sg2Bottom).to.not.equal(undefined)
       expect(g.outEdges(sg1Top, sg2Top)).to.have.length(1)
       expect(g.edge(g.outEdges(sg1Top, sg2Top)[0]).minlen).equals(1)
       expect(g.outEdges(sg2Bottom, sg1Bottom)).to.have.length(1)
@@ -82,8 +82,8 @@ describe('rank/nestingGraph', function () {
 
       var root = g.graph().nestingRoot,
         borderTop = g.node('sg1').borderTop
-      expect(root).to.exist
-      expect(borderTop).to.exist
+      expect(root).to.not.equal(undefined)
+      expect(borderTop).to.not.equal(undefined)
       expect(g.outEdges(root, borderTop)).to.have.length(1)
       expect(g.hasEdge(g.outEdges(root, borderTop)[0])).to.equal(true)
     })
@@ -93,7 +93,7 @@ describe('rank/nestingGraph', function () {
       nestingGraph.run(g)
 
       var root = g.graph().nestingRoot
-      expect(root).to.exist
+      expect(root).to.not.equal(undefined)
       expect(g.outEdges(root, 'a')).to.have.length(1)
       expect(g.edge(g.outEdges(root, 'a')[0])).eqls({ weight: 0, minlen: 1 })
     })
@@ -103,7 +103,7 @@ describe('rank/nestingGraph', function () {
       nestingGraph.run(g)
 
       var root = g.graph().nestingRoot
-      expect(root).to.exist
+      expect(root).to.not.equal(undefined)
       expect(g.outEdges(root, 'a')).to.have.length(1)
       expect(g.edge(g.outEdges(root, 'a')[0])).eqls({ weight: 0, minlen: 3 })
     })
@@ -114,7 +114,7 @@ describe('rank/nestingGraph', function () {
       nestingGraph.run(g)
 
       var root = g.graph().nestingRoot
-      expect(root).to.exist
+      expect(root).to.not.equal(undefined)
       expect(g.outEdges(root, 'a')).to.have.length(1)
       expect(g.edge(g.outEdges(root, 'a')[0])).eqls({ weight: 0, minlen: 5 })
     })
