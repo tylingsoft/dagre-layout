@@ -1,10 +1,10 @@
 MOD = dagre-layout
 
 YARN = yarn
-ISTANBUL = ./node_modules/istanbul/lib/cli.js
-KARMA = ./node_modules/karma/bin/karma
-MOCHA = ./node_modules/mocha/bin/_mocha
-UGLIFY = ./node_modules/uglify-js/bin/uglifyjs
+ISTANBUL = ./node_modules/.bin/istanbul
+KARMA = ./node_modules/.bin/karma
+MOCHA = ./node_modules/.bin/mocha
+UGLIFY = ./node_modules/.bin/uglifyjs
 
 ISTANBUL_OPTS = --dir $(COVERAGE_DIR) --report html
 MOCHA_OPTS = -R dot
