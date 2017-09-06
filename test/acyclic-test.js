@@ -94,7 +94,7 @@ describe('acyclic', function () {
 })
 
 function stripLabel (edge) {
-  const c = __.clone(edge)
+  const c = _.clone(edge)
   delete c.label
   return c
 }

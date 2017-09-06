@@ -163,7 +163,7 @@ describe('normalize', function () {
 
       normalize.undo(g)
 
-      expect(__.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
+      expect(_.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
         x: 50, y: 60, width: 20, height: 10
       })
     })
@@ -183,7 +183,7 @@ describe('normalize', function () {
 
       normalize.undo(g)
 
-      expect(__.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
+      expect(_.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
         x: 50, y: 60, width: 20, height: 10
       })
     })

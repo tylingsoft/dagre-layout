@@ -61,7 +61,7 @@ describe('layout', function () {
       a: { x: 75 / 2, y: 100 / 2 },
       b: { x: 75 / 2, y: 100 + 150 + 70 + 150 + 200 / 2 }
     })
-    expect(__.pick(g.edge('a', 'b'), ['x', 'y']))
+    expect(_.pick(g.edge('a', 'b'), ['x', 'y']))
       .eqls({ x: 75 / 2, y: 100 + 150 + 70 / 2 })
   })
 
@@ -295,7 +295,7 @@ describe('layout', function () {
 
 function extractCoordinates (g) {
   const nodes = g.nodes()
-  return __.zipObject(nodes, _.map(nodes, function (v) {
-    return __.pick(g.node(v), ['x', 'y'])
+  return _.zipObject(nodes, _.map(nodes, function (v) {
+    return _.pick(g.node(v), ['x', 'y'])
   }))
 }
