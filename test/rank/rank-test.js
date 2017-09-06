@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('../chai').expect
 const rank = require('../../lib/rank')
 const Graph = require('graphlib').Graph
@@ -22,12 +22,12 @@ describe('rank', function () {
       .setPath(['a', 'f', 'g'])
   })
 
-  _.each(RANKERS, function (ranker) {
+  __.each(RANKERS, function (ranker) {
     describe(ranker, function () {
       it('respects the minlen attribute', function () {
         g.graph().ranker = ranker
         rank(g)
-        _.each(g.edges(), function (e) {
+        __.each(g.edges(), function (e) {
           const vRank = g.node(e.v).rank
           const wRank = g.node(e.w).rank
           expect(wRank - vRank).to.be.gte(g.edge(e).minlen)

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('../chai').expect
 const Graph = require('graphlib').Graph
 const initOrder = require('../../lib/order/init-order')
@@ -14,7 +14,7 @@ describe('order/initOrder', function () {
   })
 
   it('assigns non-overlapping orders for each rank in a tree', function () {
-    _.each({ a: 0, b: 1, c: 2, d: 2, e: 1 }, function (rank, v) {
+    __.each({ a: 0, b: 1, c: 2, d: 2, e: 1 }, function (rank, v) {
       g.setNode(v, { rank: rank })
     })
     g.setPath(['a', 'b', 'c'])
@@ -23,12 +23,12 @@ describe('order/initOrder', function () {
 
     const layering = initOrder(g)
     expect(layering[0]).to.eql(['a'])
-    expect(_.sortBy(layering[1])).to.eql(['b', 'e'])
-    expect(_.sortBy(layering[2])).to.eql(['c', 'd'])
+    expect(__.sortBy(layering[1])).to.eql(['b', 'e'])
+    expect(__.sortBy(layering[2])).to.eql(['c', 'd'])
   })
 
   it('assigns non-overlapping orders for each rank in a DAG', function () {
-    _.each({ a: 0, b: 1, c: 1, d: 2 }, function (rank, v) {
+    __.each({ a: 0, b: 1, c: 1, d: 2 }, function (rank, v) {
       g.setNode(v, { rank: rank })
     })
     g.setPath(['a', 'b', 'd'])
@@ -36,8 +36,8 @@ describe('order/initOrder', function () {
 
     const layering = initOrder(g)
     expect(layering[0]).to.eql(['a'])
-    expect(_.sortBy(layering[1])).to.eql(['b', 'c'])
-    expect(_.sortBy(layering[2])).to.eql(['d'])
+    expect(__.sortBy(layering[1])).to.eql(['b', 'c'])
+    expect(__.sortBy(layering[2])).to.eql(['d'])
   })
 
   it('does not assign an order to subgraph nodes', function () {

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('../chai').expect
 const Graph = require('graphlib').Graph
 const buildLayerGraph = require('../../lib/order/build-layer-graph')
@@ -107,11 +107,11 @@ describe('order/buildLayerGraph', function () {
       borderLeft: ['bl'],
       borderRight: ['br']
     })
-    _.each(['a', 'b'], function (v) { g.setParent(v, 'sg') })
+    __.each(['a', 'b'], function (v) { g.setParent(v, 'sg') })
 
     const lg = buildLayerGraph(g, 0, 'inEdges')
     const root = lg.graph().root
-    expect(_.sortBy(lg.children(root))).eqls(['c', 'sg'])
+    expect(__.sortBy(lg.children(root))).eqls(['c', 'sg'])
     expect(lg.parent('a')).equals('sg')
     expect(lg.parent('b')).equals('sg')
   })

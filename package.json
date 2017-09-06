@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "graphlib": "^2.1.1",
-    "lodash": "3.10.1"
+    "lodash": "^4.17.4",
+    "lodash3": "^3.10.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

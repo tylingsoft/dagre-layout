@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('./chai').expect
 const normalize = require('../lib/normalize')
 const Graph = require('graphlib').Graph
@@ -20,7 +20,7 @@ describe('normalize', function () {
 
       normalize.run(g)
 
-      expect(_.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
+      expect(__.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
       expect(g.node('a').rank).to.equal(0)
       expect(g.node('b').rank).to.equal(1)
     })
@@ -91,7 +91,7 @@ describe('normalize', function () {
       normalize.run(g)
       normalize.undo(g)
 
-      expect(_.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
+      expect(__.map(g.edges(), incidentNodes)).to.eql([{ v: 'a', w: 'b' }])
       expect(g.node('a').rank).to.equal(0)
       expect(g.node('b').rank).to.equal(2)
     })
@@ -163,7 +163,7 @@ describe('normalize', function () {
 
       normalize.undo(g)
 
-      expect(_.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
+      expect(__.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
         x: 50, y: 60, width: 20, height: 10
       })
     })
@@ -183,7 +183,7 @@ describe('normalize', function () {
 
       normalize.undo(g)
 
-      expect(_.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
+      expect(__.pick(g.edge('a', 'b'), ['x', 'y', 'width', 'height'])).eqls({
         x: 50, y: 60, width: 20, height: 10
       })
     })
@@ -196,7 +196,7 @@ describe('normalize', function () {
 
       normalize.run(g)
 
-      const outEdges = _.sortBy(g.outEdges('a'), 'name')
+      const outEdges = __.sortBy(g.outEdges('a'), 'name')
       expect(outEdges).to.have.length(2)
 
       const barDummy = g.node(outEdges[0].w)

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('../chai').expect
 const Graph = require('graphlib').Graph
 const feasibleTree = require('../../lib/rank/feasible-tree')
@@ -30,8 +30,8 @@ describe('feasibleTree', function () {
     expect(g.node('b').rank).to.eql(g.node('a').rank + 1)
     expect(g.node('c').rank).to.eql(g.node('b').rank + 1)
     expect(g.node('d').rank).to.eql(g.node('a').rank + 1)
-    expect(_.sortBy(tree.neighbors('a'))).to.eql(['b', 'd'])
-    expect(_.sortBy(tree.neighbors('b'))).to.eql(['a', 'c'])
+    expect(__.sortBy(tree.neighbors('a'))).to.eql(['b', 'd'])
+    expect(__.sortBy(tree.neighbors('b'))).to.eql(['a', 'c'])
     expect(tree.neighbors('c')).to.eql(['b'])
     expect(tree.neighbors('d')).to.eql(['a'])
   })
@@ -47,8 +47,8 @@ describe('feasibleTree', function () {
     const tree = feasibleTree(g)
     expect(g.node('a').rank).to.eql(g.node('b').rank + 1)
     expect(g.node('c').rank).to.eql(g.node('b').rank + 1)
-    expect(_.sortBy(tree.neighbors('a'))).to.eql(['b'])
-    expect(_.sortBy(tree.neighbors('b'))).to.eql(['a', 'c'])
-    expect(_.sortBy(tree.neighbors('c'))).to.eql(['b'])
+    expect(__.sortBy(tree.neighbors('a'))).to.eql(['b'])
+    expect(__.sortBy(tree.neighbors('b'))).to.eql(['a', 'c'])
+    expect(__.sortBy(tree.neighbors('c'))).to.eql(['b'])
   })
 })

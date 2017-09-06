@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('./chai').expect
 const acyclic = require('../lib/acyclic')
 const Graph = require('graphlib').Graph
@@ -19,7 +19,7 @@ describe('acyclic', function () {
       .setDefaultEdgeLabel(function () { return { minlen: 1, weight: 1 } })
   })
 
-  _.each(ACYCLICERS, function (acyclicer) {
+  __.each(ACYCLICERS, function (acyclicer) {
     describe(acyclicer, function () {
       beforeEach(function () {
         g.setGraph({ acyclicer: acyclicer })
@@ -30,8 +30,8 @@ describe('acyclic', function () {
           g.setPath(['a', 'b', 'd'])
           g.setPath(['a', 'c', 'd'])
           acyclic.run(g)
-          const results = _.map(g.edges(), stripLabel)
-          expect(_.sortByAll(results, ['v', 'w'])).to.eql([
+          const results = __.map(g.edges(), stripLabel)
+          expect(__.sortByAll(results, ['v', 'w'])).to.eql([
             { v: 'a', w: 'b' },
             { v: 'a', w: 'c' },
             { v: 'b', w: 'd' },
@@ -94,7 +94,7 @@ describe('acyclic', function () {
 })
 
 function stripLabel (edge) {
-  const c = _.clone(edge)
+  const c = __.clone(edge)
   delete c.label
   return c
 }

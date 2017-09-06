@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('../chai').expect
 const buildLayerMatrix = require('../../lib/util').buildLayerMatrix
 const bk = require('../../lib/position/bk')
@@ -56,7 +56,7 @@ describe('position/bk', function () {
       expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
     })
 
-    _.each(['a', 'b', 'c', 'd'], function (v) {
+    __.each(['a', 'b', 'c', 'd'], function (v) {
       it('does not mark type-0 conflicts (' + v + ' is dummy)', function () {
         g.node(v).dummy = true
 
@@ -66,9 +66,9 @@ describe('position/bk', function () {
       })
     })
 
-    _.each(['a', 'b', 'c', 'd'], function (v) {
+    __.each(['a', 'b', 'c', 'd'], function (v) {
       it('does mark type-1 conflicts (' + v + ' is non-dummy)', function () {
-        _.each(['a', 'b', 'c', 'd'], function (w) {
+        __.each(['a', 'b', 'c', 'd'], function (w) {
           if (v !== w) {
             g.node(w).dummy = true
           }
@@ -86,7 +86,7 @@ describe('position/bk', function () {
     })
 
     it('does not mark type-2 conflicts (all dummies)', function () {
-      _.each(['a', 'b', 'c', 'd'], function (v) {
+      __.each(['a', 'b', 'c', 'd'], function (v) {
         g.node(v).dummy = true
       })
 
@@ -115,11 +115,11 @@ describe('position/bk', function () {
     })
 
     it('marks type-2 conflicts favoring border segments #1', function () {
-      _.each(['a', 'd'], function (v) {
+      __.each(['a', 'd'], function (v) {
         g.node(v).dummy = true
       })
 
-      _.each(['b', 'c'], function (v) {
+      __.each(['b', 'c'], function (v) {
         g.node(v).dummy = 'border'
       })
 
@@ -130,11 +130,11 @@ describe('position/bk', function () {
     })
 
     it('marks type-2 conflicts favoring border segments #2', function () {
-      _.each(['b', 'c'], function (v) {
+      __.each(['b', 'c'], function (v) {
         g.node(v).dummy = true
       })
 
-      _.each(['a', 'd'], function (v) {
+      __.each(['a', 'd'], function (v) {
         g.node(v).dummy = 'border'
       })
 

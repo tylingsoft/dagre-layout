@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('./chai').expect
 const Graph = require('graphlib').Graph
 const util = require('../lib/util')
@@ -173,7 +173,7 @@ describe('util', function () {
 
     it('logs timing information', function () {
       const capture = []
-      console.log = function () { capture.push(_.toArray(arguments)[0]) }
+      console.log = function () { capture.push(__.toArray(arguments)[0]) }
       util.time('foo', function () {})
       expect(capture.length).to.equal(1)
       expect(capture[0]).to.match(/^foo time: .*ms/)
@@ -181,7 +181,7 @@ describe('util', function () {
 
     it('returns the value from the evaluated function', function () {
       console.log = function () {}
-      expect(util.time('foo', _.constant('bar'))).to.equal('bar')
+      expect(util.time('foo', __.constant('bar'))).to.equal('bar')
     })
   })
 

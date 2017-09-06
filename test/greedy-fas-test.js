@@ -1,6 +1,6 @@
 /* eslint-env mocha */
+const __ = require('lodash3')
 const _ = require('lodash')
-require('lodash-migrate')
 const expect = require('./chai').expect
 const Graph = require('graphlib').Graph
 const findCycles = require('graphlib').alg.findCycles
@@ -84,7 +84,7 @@ describe('greedyFAS', function () {
     g.setEdge('a', 'b', 5, 'foo')
     g.setEdge('b', 'a', 2, 'bar')
     g.setEdge('b', 'a', 2, 'baz')
-    expect(_.sortBy(greedyFAS(g, weightFn(g)), 'name')).to.eql([
+    expect(__.sortBy(greedyFAS(g, weightFn(g)), 'name')).to.eql([
       { v: 'b', w: 'a', name: 'bar' },
       { v: 'b', w: 'a', name: 'baz' }
     ])
@@ -94,7 +94,7 @@ describe('greedyFAS', function () {
 function checkFAS (g, fas) {
   const n = g.nodeCount()
   const m = g.edgeCount()
-  _.each(fas, function (edge) {
+  __.each(fas, function (edge) {
     g.removeEdge(edge.v, edge.w)
   })
   expect(findCycles(g)).to.eql([])
