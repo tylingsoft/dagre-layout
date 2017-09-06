@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-var _ = require('lodash'),
-  expect = require('./chai').expect,
-  Graph = require('graphlib').Graph,
-  util = require('../lib/util')
+const _ = require('lodash')
+const expect = require('./chai').expect
+const Graph = require('graphlib').Graph
+const util = require('../lib/util')
 
 describe('util', function () {
   describe('simplify', function () {
@@ -61,7 +61,7 @@ describe('util', function () {
     it('does not copy compound nodes', function () {
       g.setParent('a', 'sg1')
       var g2 = util.asNonCompoundGraph(g)
-      expect(g2.parent(g)).to.be.undefined
+      expect(g2.parent(g)).to.equal(undefined)
       expect(g2.isCompound()).to.equal(false)
     })
 

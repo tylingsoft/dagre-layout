@@ -1,9 +1,9 @@
 /* eslint-env mocha */
-var expect = require('../chai').expect,
-  Graph = require('graphlib').Graph,
-  normalizeRanks = require('../../lib/util').normalizeRanks,
-  rankUtil = require('../../lib/rank/util'),
-  longestPath = rankUtil.longestPath
+const expect = require('../chai').expect
+const Graph = require('graphlib').Graph
+const normalizeRanks = require('../../lib/util').normalizeRanks
+const rankUtil = require('../../lib/rank/util')
+const longestPath = rankUtil.longestPath
 
 describe('rank/util', function () {
   describe('longestPath', function () {
