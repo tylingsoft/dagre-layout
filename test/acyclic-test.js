@@ -31,7 +31,7 @@ describe('acyclic', function () {
           g.setPath(['a', 'c', 'd'])
           acyclic.run(g)
           const results = _.map(g.edges(), stripLabel)
-          expect(__.sortByAll(results, ['v', 'w'])).to.eql([
+          expect(_.sortBy(results, ['v', 'w'])).to.eql([
             { v: 'a', w: 'b' },
             { v: 'a', w: 'c' },
             { v: 'b', w: 'd' },
