@@ -3,7 +3,7 @@ const expect = require('../chai').expect
 const List = require('../../lib/data/list')
 
 describe('data.List', function () {
-  var list
+  let list
 
   beforeEach(function () {
     list = new List()
@@ -15,7 +15,7 @@ describe('data.List', function () {
     })
 
     it('unlinks and returns the first entry', function () {
-      var obj = {}
+      const obj = {}
       list.enqueue(obj)
       expect(list.dequeue()).to.equal(obj)
     })

@@ -5,7 +5,7 @@ const components = require('graphlib').alg.components
 const nestingGraph = require('../lib/nesting-graph')
 
 describe('rank/nestingGraph', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph({ compound: true })
@@ -92,7 +92,7 @@ describe('rank/nestingGraph', function () {
       g.setNode('a')
       nestingGraph.run(g)
 
-      var root = g.graph().nestingRoot
+      const root = g.graph().nestingRoot
       expect(root).to.not.equal(undefined)
       expect(g.outEdges(root, 'a')).to.have.length(1)
       expect(g.edge(g.outEdges(root, 'a')[0])).eqls({ weight: 0, minlen: 1 })
@@ -102,7 +102,7 @@ describe('rank/nestingGraph', function () {
       g.setParent('a', 'sg1')
       nestingGraph.run(g)
 
-      var root = g.graph().nestingRoot
+      const root = g.graph().nestingRoot
       expect(root).to.not.equal(undefined)
       expect(g.outEdges(root, 'a')).to.have.length(1)
       expect(g.edge(g.outEdges(root, 'a')[0])).eqls({ weight: 0, minlen: 3 })
@@ -113,7 +113,7 @@ describe('rank/nestingGraph', function () {
       g.setParent('a', 'sg2')
       nestingGraph.run(g)
 
-      var root = g.graph().nestingRoot
+      const root = g.graph().nestingRoot
       expect(root).to.not.equal(undefined)
       expect(g.outEdges(root, 'a')).to.have.length(1)
       expect(g.edge(g.outEdges(root, 'a')[0])).eqls({ weight: 0, minlen: 5 })
@@ -123,7 +123,7 @@ describe('rank/nestingGraph', function () {
       g.setNode('a')
       nestingGraph.run(g)
 
-      var root = g.graph().nestingRoot
+      const root = g.graph().nestingRoot
       expect(g.outEdges(root, root)).eqls([])
     })
 

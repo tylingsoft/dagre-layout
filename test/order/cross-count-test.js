@@ -4,7 +4,7 @@ const Graph = require('graphlib').Graph
 const crossCount = require('../../lib/order/cross-count')
 
 describe('crossCount', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph()

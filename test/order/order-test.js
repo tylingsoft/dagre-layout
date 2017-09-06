@@ -7,7 +7,7 @@ const crossCount = require('../../lib/order/cross-count')
 const util = require('../../lib/util')
 
 describe('order', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph()
@@ -22,7 +22,7 @@ describe('order', function () {
     g.setEdge('b', 'd')
     g.setPath(['a', 'e', 'f'])
     order(g)
-    var layering = util.buildLayerMatrix(g)
+    const layering = util.buildLayerMatrix(g)
     expect(crossCount(g, layering)).to.equal(0)
   })
 
@@ -32,7 +32,7 @@ describe('order', function () {
     _.each(['b', 'f', 'e'], function (v) { g.setNode(v, { rank: 2 }) })
     _.each(['c', 'g'], function (v) { g.setNode(v, { rank: 3 }) })
     order(g)
-    var layering = util.buildLayerMatrix(g)
+    const layering = util.buildLayerMatrix(g)
     expect(crossCount(g, layering)).to.equal(0)
   })
 
@@ -42,7 +42,7 @@ describe('order', function () {
     _.each(['c', 'f', 'h'], function (v) { g.setNode(v, { rank: 3 }) })
     g.setNode('d', { rank: 4 })
     order(g)
-    var layering = util.buildLayerMatrix(g)
+    const layering = util.buildLayerMatrix(g)
     expect(crossCount(g, layering)).to.be.lte(1)
   })
 })

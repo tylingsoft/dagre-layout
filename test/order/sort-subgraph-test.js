@@ -5,7 +5,8 @@ const sortSubgraph = require('../../lib/order/sort-subgraph')
 const Graph = require('graphlib').Graph
 
 describe('order/sortSubgraph', function () {
-  var g, cg
+  let g
+  let cg
 
   beforeEach(function () {
     g = new Graph({ compound: true })
@@ -56,7 +57,7 @@ describe('order/sortSubgraph', function () {
     g.setEdge(4, 'y')
     _.each(['x', 'y'], function (v) { g.setParent(v, 'movable') })
 
-    var results = sortSubgraph(g, 'movable', cg)
+    const results = sortSubgraph(g, 'movable', cg)
     expect(results.barycenter).to.equal(2.25)
     expect(results.weight).to.equal(4)
   })

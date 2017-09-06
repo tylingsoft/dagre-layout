@@ -9,8 +9,8 @@
 const fs = require('fs')
 const semver = require('semver')
 
-var packageFile = fs.readFileSync('package.json')
-var packageJson = JSON.parse(packageFile)
+const packageFile = fs.readFileSync('package.json')
+const packageJson = JSON.parse(packageFile)
 
 if (!('version' in packageJson)) {
   bail('ERROR: Could not find version in package.json')

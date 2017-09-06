@@ -4,7 +4,7 @@ const position = require('../lib/position')
 const Graph = require('graphlib').Graph
 
 describe('position', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph({ compound: true })

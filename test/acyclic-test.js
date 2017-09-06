@@ -6,12 +6,12 @@ const Graph = require('graphlib').Graph
 const findCycles = require('graphlib').alg.findCycles
 
 describe('acyclic', function () {
-  var ACYCLICERS = [
+  const ACYCLICERS = [
     'greedy',
     'dfs',
     'unknown-should-still-work'
   ]
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph({ multigraph: true })
@@ -29,7 +29,7 @@ describe('acyclic', function () {
           g.setPath(['a', 'b', 'd'])
           g.setPath(['a', 'c', 'd'])
           acyclic.run(g)
-          var results = _.map(g.edges(), stripLabel)
+          const results = _.map(g.edges(), stripLabel)
           expect(_.sortByAll(results, ['v', 'w'])).to.eql([
             { v: 'a', w: 'b' },
             { v: 'a', w: 'c' },
@@ -93,7 +93,7 @@ describe('acyclic', function () {
 })
 
 function stripLabel (edge) {
-  var c = _.clone(edge)
+  const c = _.clone(edge)
   delete c.label
   return c
 }

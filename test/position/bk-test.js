@@ -16,18 +16,17 @@ const positionX = bk.positionX
 const Graph = require('graphlib').Graph
 
 describe('position/bk', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph().setGraph({})
   })
 
   describe('findType1Conflicts', function () {
-    var layering
+    let layering
 
     beforeEach(function () {
-      g
-        .setDefaultEdgeLabel(function () { return {} })
+      g.setDefaultEdgeLabel(function () { return {} })
         .setNode('a', { rank: 0, order: 0 })
         .setNode('b', { rank: 0, order: 1 })
         .setNode('c', { rank: 1, order: 0 })
@@ -45,13 +44,13 @@ describe('position/bk', function () {
       g.setEdge('a', 'c')
       g.setEdge('b', 'd')
 
-      var conflicts = findType1Conflicts(g, layering)
+      const conflicts = findType1Conflicts(g, layering)
       expect(hasConflict(conflicts, 'a', 'c')).to.equal(false)
       expect(hasConflict(conflicts, 'b', 'd')).to.equal(false)
     })
 
     it('does not mark type-0 conflicts (no dummies)', function () {
-      var conflicts = findType1Conflicts(g, layering)
+      const conflicts = findType1Conflicts(g, layering)
       expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
       expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
     })
@@ -60,7 +59,7 @@ describe('position/bk', function () {
       it('does not mark type-0 conflicts (' + v + ' is dummy)', function () {
         g.node(v).dummy = true
 
-        var conflicts = findType1Conflicts(g, layering)
+        const conflicts = findType1Conflicts(g, layering)
         expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
         expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
       })
@@ -74,7 +73,7 @@ describe('position/bk', function () {
           }
         })
 
-        var conflicts = findType1Conflicts(g, layering)
+        const conflicts = findType1Conflicts(g, layering)
         if (v === 'a' || v === 'd') {
           expect(hasConflict(conflicts, 'a', 'd')).to.equal(true)
           expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
@@ -90,7 +89,7 @@ describe('position/bk', function () {
         g.node(v).dummy = true
       })
 
-      var conflicts = findType1Conflicts(g, layering)
+      const conflicts = findType1Conflicts(g, layering)
       expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
       expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
       findType1Conflicts(g, layering)
@@ -98,7 +97,7 @@ describe('position/bk', function () {
   })
 
   describe('findType2Conflicts', function () {
-    var layering
+    let layering
 
     beforeEach(function () {
       g
@@ -123,7 +122,7 @@ describe('position/bk', function () {
         g.node(v).dummy = 'border'
       })
 
-      var conflicts = findType2Conflicts(g, layering)
+      const conflicts = findType2Conflicts(g, layering)
       expect(hasConflict(conflicts, 'a', 'd')).to.equal(true)
       expect(hasConflict(conflicts, 'b', 'c')).to.equal(false)
       findType1Conflicts(g, layering)
@@ -138,7 +137,7 @@ describe('position/bk', function () {
         g.node(v).dummy = 'border'
       })
 
-      var conflicts = findType2Conflicts(g, layering)
+      const conflicts = findType2Conflicts(g, layering)
       expect(hasConflict(conflicts, 'a', 'd')).to.equal(false)
       expect(hasConflict(conflicts, 'b', 'c')).to.equal(true)
       findType1Conflicts(g, layering)
@@ -147,14 +146,14 @@ describe('position/bk', function () {
 
   describe('hasConflict', function () {
     it('can test for a type-1 conflict regardless of edge orientation', function () {
-      var conflicts = {}
+      const conflicts = {}
       addConflict(conflicts, 'b', 'a')
       expect(hasConflict(conflicts, 'a', 'b')).to.equal(true)
       expect(hasConflict(conflicts, 'b', 'a')).to.equal(true)
     })
 
     it('works for multiple conflicts with the same node', function () {
-      var conflicts = {}
+      const conflicts = {}
       addConflict(conflicts, 'a', 'b')
       addConflict(conflicts, 'a', 'c')
       expect(hasConflict(conflicts, 'a', 'b')).to.equal(true)
@@ -170,7 +169,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { a: 'a', b: 'b' },
         align: { a: 'a', b: 'b' }
@@ -185,7 +184,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { a: 'a', b: 'a' },
         align: { a: 'b', b: 'a' }
@@ -202,7 +201,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { a: 'a', b: 'b', c: 'a' },
         align: { a: 'c', b: 'b', c: 'a' }
@@ -223,7 +222,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { z: 'z', b: 'b', c: 'z' },
         align: { z: 'c', b: 'b', c: 'z' }
@@ -242,7 +241,7 @@ describe('position/bk', function () {
 
       addConflict(conflicts, 'a', 'c')
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { a: 'a', b: 'b', c: 'b' },
         align: { a: 'a', b: 'c', c: 'b' }
@@ -261,7 +260,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       // c will align with b, so d will not be able to align with a, because
       // (a,d) and (c,b) cross.
       expect(result).to.eql({
@@ -282,7 +281,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { a: 'a', b: 'b', c: 'c', d: 'b' },
         align: { a: 'a', b: 'd', c: 'c', d: 'b' }
@@ -300,7 +299,7 @@ describe('position/bk', function () {
       const layering = buildLayerMatrix(g)
       const conflicts = {}
 
-      var result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
+      const result = verticalAlignment(g, layering, conflicts, g.predecessors.bind(g))
       expect(result).to.eql({
         root: { a: 'a', b: 'a', c: 'c', d: 'a' },
         align: { a: 'b', b: 'd', c: 'c', d: 'a' }
@@ -314,7 +313,7 @@ describe('position/bk', function () {
       const align = { a: 'a' }
       g.setNode('a', { rank: 0, order: 0 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
     })
 
@@ -325,7 +324,7 @@ describe('position/bk', function () {
       g.setNode('a', { rank: 0, order: 0, width: 100 })
       g.setNode('b', { rank: 0, order: 1, width: 200 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(100 / 2 + 100 + 200 / 2)
     })
@@ -337,7 +336,7 @@ describe('position/bk', function () {
       g.setNode('a', { rank: 0, order: 0, width: 100, dummy: true })
       g.setNode('b', { rank: 0, order: 1, width: 200, dummy: true })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(100 / 2 + 20 + 200 / 2)
     })
@@ -348,7 +347,7 @@ describe('position/bk', function () {
       g.setNode('a', { rank: 0, order: 0, width: 100 })
       g.setNode('b', { rank: 1, order: 0, width: 200 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(0)
     })
@@ -361,7 +360,7 @@ describe('position/bk', function () {
       g.setNode('b', { rank: 1, order: 1, width: 200 })
       g.setNode('c', { rank: 1, order: 0, width: 50 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(50 / 2 + 75 + 200 / 2)
       expect(xs.b).to.equal(50 / 2 + 75 + 200 / 2)
       expect(xs.c).to.equal(0)
@@ -376,7 +375,7 @@ describe('position/bk', function () {
       g.setNode('c', { rank: 1, order: 0, width: 50 })
       g.setNode('d', { rank: 1, order: 1, width: 80 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(100 / 2 + 75 + 200 / 2)
       expect(xs.c).to.equal(100 / 2 + 75 + 200 / 2 - 80 / 2 - 75 - 50 / 2)
@@ -392,7 +391,7 @@ describe('position/bk', function () {
       g.setNode('c', { rank: 1, order: 0, width: 60 })
       g.setNode('d', { rank: 1, order: 1, width: 70 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(50 / 2 + 75 + 150 / 2)
       expect(xs.c).to.equal(0)
@@ -408,7 +407,7 @@ describe('position/bk', function () {
       g.setNode('c', { rank: 1, order: 0, width: 60 })
       g.setNode('d', { rank: 1, order: 1, width: 150 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(60 / 2 + 75 + 150 / 2)
       expect(xs.c).to.equal(0)
@@ -427,7 +426,7 @@ describe('position/bk', function () {
       g.setNode('f', { rank: 2, order: 0, width: 50 })
       g.setNode('g', { rank: 2, order: 1, width: 50 })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
 
       // Use f as 0, everything is relative to it
       expect(xs.a).to.equal(xs.b - 50 / 2 - 75 - 50 / 2)
@@ -452,7 +451,7 @@ describe('position/bk', function () {
       })
       g.setNode('c', { rank: 0, order: 2, width: 300, dummy: 'edge' })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(xs.a + 100 / 2 + 50 + 200)
       expect(xs.c).to.equal(xs.b + 0 + 50 + 300 / 2)
@@ -472,7 +471,7 @@ describe('position/bk', function () {
       })
       g.setNode('c', { rank: 0, order: 2, width: 300, dummy: 'edge' })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(xs.a + 100 / 2 + 50 + 200 / 2)
       expect(xs.c).to.equal(xs.b + 200 / 2 + 50 + 300 / 2)
@@ -492,7 +491,7 @@ describe('position/bk', function () {
       })
       g.setNode('c', { rank: 0, order: 2, width: 300, dummy: 'edge' })
 
-      var xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
+      const xs = horizontalCompaction(g, buildLayerMatrix(g), root, align)
       expect(xs.a).to.equal(0)
       expect(xs.b).to.equal(xs.a + 100 / 2 + 50 + 0)
       expect(xs.c).to.equal(xs.b + 200 + 50 + 300 / 2)
@@ -501,7 +500,7 @@ describe('position/bk', function () {
 
   describe('alignCoordinates', function () {
     it('aligns a single node', function () {
-      var xss = {
+      const xss = {
         ul: { a: 50 },
         ur: { a: 100 },
         dl: { a: 50 },
@@ -517,7 +516,7 @@ describe('position/bk', function () {
     })
 
     it('aligns multiple nodes', function () {
-      var xss = {
+      const xss = {
         ul: { a: 50, b: 1000 },
         ur: { a: 100, b: 900 },
         dl: { a: 150, b: 800 },
@@ -538,7 +537,7 @@ describe('position/bk', function () {
       g.setNode('a', { width: 50 })
       g.setNode('b', { width: 50 })
 
-      var xss = {
+      const xss = {
         ul: { a: 0, b: 1000 },
         ur: { a: -5, b: 1000 },
         dl: { a: 5, b: 2000 },
@@ -553,7 +552,7 @@ describe('position/bk', function () {
       g.setNode('b', { width: 50 })
       g.setNode('c', { width: 200 })
 
-      var xss = {
+      const xss = {
         ul: { a: 0, b: 100, c: 75 },
         ur: { a: 0, b: 100, c: 80 },
         dl: { a: 0, b: 100, c: 85 },
@@ -566,7 +565,7 @@ describe('position/bk', function () {
 
   describe('balance', function () {
     it('aligns a single node to the shared median value', function () {
-      var xss = {
+      const xss = {
         ul: { a: 0 },
         ur: { a: 100 },
         dl: { a: 100 },
@@ -577,7 +576,7 @@ describe('position/bk', function () {
     })
 
     it('aligns a single node to the average of different median values', function () {
-      var xss = {
+      const xss = {
         ul: { a: 0 },
         ur: { a: 75 },
         dl: { a: 125 },
@@ -588,7 +587,7 @@ describe('position/bk', function () {
     })
 
     it('balances multiple nodes', function () {
-      var xss = {
+      const xss = {
         ul: { a: 0, b: 50 },
         ur: { a: 75, b: 0 },
         dl: { a: 125, b: 60 },

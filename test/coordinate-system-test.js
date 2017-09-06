@@ -4,7 +4,7 @@ const coordinateSystem = require('../lib/coordinate-system')
 const expect = require('./chai').expect
 
 describe('coordinateSystem', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph()

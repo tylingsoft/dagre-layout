@@ -8,7 +8,7 @@ const rank = require('../lib/rank')
 const layout = require('..').layout
 
 function runBenchmark (name, fn) {
-  var options = {}
+  const options = {}
   options.onComplete = function (bench) {
     const target = bench.target
     const hz = target.hz
@@ -34,7 +34,7 @@ function runBenchmark (name, fn) {
   new Benchmark(name, fn, options).run()
 }
 
-var g = new Graph()
+const g = new Graph()
   .setGraph({})
   .setDefaultNodeLabel(function () { return { width: 1, height: 1 } })
   .setDefaultEdgeLabel(function () { return { minlen: 1, weight: 1 } })

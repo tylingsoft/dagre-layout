@@ -13,7 +13,10 @@ const exchangeEdges = networkSimplex.exchangeEdges
 const normalizeRanks = require('../../lib/util').normalizeRanks
 
 describe('network simplex', function () {
-  var g, t, gansnerGraph, gansnerTree
+  let g
+  let t
+  let gansnerGraph
+  let gansnerTree
 
   beforeEach(function () {
     g = new Graph({ multigraph: true })
@@ -104,14 +107,14 @@ describe('network simplex', function () {
 
   describe('leaveEdge', function () {
     it('returns undefined if there is no edge with a negative cutvalue', function () {
-      var tree = new Graph({ directed: false })
+      const tree = new Graph({ directed: false })
       tree.setEdge('a', 'b', { cutvalue: 1 })
       tree.setEdge('b', 'c', { cutvalue: 1 })
       expect(leaveEdge(tree)).to.equal(undefined)
     })
 
     it('returns an edge if one is found with a negative cutvalue', function () {
-      var tree = new Graph({ directed: false })
+      const tree = new Graph({ directed: false })
       tree.setEdge('a', 'b', { cutvalue: 1 })
       tree.setEdge('b', 'c', { cutvalue: -1 })
       expect(leaveEdge(tree)).to.eql({ v: 'b', w: 'c' })
@@ -129,7 +132,7 @@ describe('network simplex', function () {
       t.setPath(['b', 'c', 'a'])
       initLowLimValues(t, 'c')
 
-      var f = enterEdge(t, g, { v: 'b', w: 'c' })
+      const f = enterEdge(t, g, { v: 'b', w: 'c' })
       expect(undirectedEdge(f)).to.eql(undirectedEdge({ v: 'a', w: 'b' }))
     })
 
@@ -143,7 +146,7 @@ describe('network simplex', function () {
       t.setPath(['b', 'c', 'a'])
       initLowLimValues(t, 'b')
 
-      var f = enterEdge(t, g, { v: 'b', w: 'c' })
+      const f = enterEdge(t, g, { v: 'b', w: 'c' })
       expect(undirectedEdge(f)).to.eql(undirectedEdge({ v: 'a', w: 'b' }))
     })
 
@@ -159,7 +162,7 @@ describe('network simplex', function () {
       t.setPath(['c', 'd', 'a', 'b'])
       initLowLimValues(t, 'a')
 
-      var f = enterEdge(t, g, { v: 'c', w: 'd' })
+      const f = enterEdge(t, g, { v: 'c', w: 'd' })
       expect(undirectedEdge(f)).to.eql(undirectedEdge({ v: 'b', w: 'c' }))
     })
 
@@ -169,7 +172,7 @@ describe('network simplex', function () {
       longestPath(g)
       initLowLimValues(t, 'a')
 
-      var f = enterEdge(t, g, { v: 'g', w: 'h' })
+      const f = enterEdge(t, g, { v: 'g', w: 'h' })
       expect(undirectedEdge(f).v).to.equal('a')
       expect(['e', 'f']).to.include(undirectedEdge(f).w)
     })
@@ -180,7 +183,7 @@ describe('network simplex', function () {
       longestPath(g)
       initLowLimValues(t, 'e')
 
-      var f = enterEdge(t, g, { v: 'g', w: 'h' })
+      const f = enterEdge(t, g, { v: 'g', w: 'h' })
       expect(undirectedEdge(f).v).to.equal('a')
       expect(['e', 'f']).to.include(undirectedEdge(f).w)
     })
@@ -191,7 +194,7 @@ describe('network simplex', function () {
       longestPath(g)
       initLowLimValues(t, 'a')
 
-      var f = enterEdge(t, g, { v: 'h', w: 'g' })
+      const f = enterEdge(t, g, { v: 'h', w: 'g' })
       expect(undirectedEdge(f).v).to.equal('a')
       expect(['e', 'f']).to.include(undirectedEdge(f).w)
     })
@@ -202,7 +205,7 @@ describe('network simplex', function () {
       longestPath(g)
       initLowLimValues(t, 'e')
 
-      var f = enterEdge(t, g, { v: 'h', w: 'g' })
+      const f = enterEdge(t, g, { v: 'h', w: 'g' })
       expect(undirectedEdge(f).v).to.equal('a')
       expect(['e', 'f']).to.include(undirectedEdge(f).w)
     })
@@ -210,7 +213,7 @@ describe('network simplex', function () {
 
   describe('initLowLimValues', function () {
     it('assigns low, lim, and parent for each node in a tree', function () {
-      var g = new Graph()
+      const g = new Graph()
         .setDefaultNodeLabel(function () { return {} })
         .setNodes(['a', 'b', 'c', 'd', 'e'])
         .setPath(['a', 'b', 'a', 'c', 'd', 'c', 'e'])
@@ -263,7 +266,7 @@ describe('network simplex', function () {
       expect(t.edge('g', 'f').cutvalue).to.equal(0)
 
       // ensure lim numbers look right
-      var lims = _.sortBy(_.map(t.nodes(), function (v) { return t.node(v).lim }))
+      const lims = _.sortBy(_.map(t.nodes(), function (v) { return t.node(v).lim }))
       expect(lims).to.eql(_.range(1, 9))
     })
 

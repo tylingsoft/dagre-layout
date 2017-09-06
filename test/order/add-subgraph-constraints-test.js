@@ -5,7 +5,8 @@ const Graph = require('graphlib').Graph
 const addSubgraphConstraints = require('../../lib/order/add-subgraph-constraints')
 
 describe('order/addSubgraphConstraints', function () {
-  var g, cg
+  let g
+  let cg
 
   beforeEach(function () {
     g = new Graph({ compound: true })
@@ -13,7 +14,7 @@ describe('order/addSubgraphConstraints', function () {
   })
 
   it('does not change CG for a flat set of nodes', function () {
-    var vs = ['a', 'b', 'c', 'd']
+    const vs = ['a', 'b', 'c', 'd']
     _.each(vs, function (v) { g.setNode(v) })
     addSubgraphConstraints(g, cg, vs)
     expect(cg.nodeCount()).equals(0)
@@ -21,7 +22,7 @@ describe('order/addSubgraphConstraints', function () {
   })
 
   it("doesn't create a constraint for contiguous subgraph nodes", function () {
-    var vs = ['a', 'b', 'c']
+    const vs = ['a', 'b', 'c']
     _.each(vs, function (v) {
       g.setParent(v, 'sg')
     })
@@ -31,7 +32,7 @@ describe('order/addSubgraphConstraints', function () {
   })
 
   it('adds a constraint when the parents for adjacent nodes are different', function () {
-    var vs = ['a', 'b']
+    const vs = ['a', 'b']
     g.setParent('a', 'sg1')
     g.setParent('b', 'sg2')
     addSubgraphConstraints(g, cg, vs)
@@ -39,7 +40,7 @@ describe('order/addSubgraphConstraints', function () {
   })
 
   it('works for multiple levels', function () {
-    var vs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    const vs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
     _.each(vs, function (v) {
       g.setNode(v)
     })

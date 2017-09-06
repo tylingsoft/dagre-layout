@@ -5,7 +5,7 @@ const layout = require('../index').layout
 const Graph = require('graphlib').Graph
 
 describe('layout', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph({ multigraph: true, compound: true })
@@ -76,7 +76,8 @@ describe('layout', function () {
         g.setEdge('b', 'd', { width: 1, height: 1 })
         layout(g)
 
-        var p1, p2
+        let p1
+        let p2
         if (rankdir === 'TB' || rankdir === 'BT') {
           p1 = g.edge('a', 'c')
           p2 = g.edge('b', 'd')
@@ -147,7 +148,7 @@ describe('layout', function () {
     g.setNode('b', { width: 100, height: 100 })
     g.setEdge('a', 'b')
     layout(g)
-    var points = g.edge('a', 'b').points
+    const points = g.edge('a', 'b').points
     expect(points).to.have.length(3)
     expect(points).eqls([
       { x: 100 / 2, y: 100 },           // intersect with bottom of a
@@ -162,7 +163,7 @@ describe('layout', function () {
     g.setNode('b', { width: 100, height: 100 })
     g.setEdge('a', 'b', { minlen: 2 })
     layout(g)
-    var points = g.edge('a', 'b').points
+    const points = g.edge('a', 'b').points
     expect(points).to.have.length(5)
     expect(points).eqls([
       { x: 100 / 2, y: 100 },           // intersect with bottom of a
@@ -292,7 +293,7 @@ describe('layout', function () {
 })
 
 function extractCoordinates (g) {
-  var nodes = g.nodes()
+  const nodes = g.nodes()
   return _.zipObject(nodes, _.map(nodes, function (v) {
     return _.pick(g.node(v), ['x', 'y'])
   }))

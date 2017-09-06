@@ -4,14 +4,14 @@ const addBorderSegments = require('../lib/add-border-segments')
 const Graph = require('graphlib').Graph
 
 describe('addBorderSegments', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph({ compound: true })
   })
 
   it('does not add border nodes for a non-compound graph', function () {
-    var g = new Graph()
+    const g = new Graph()
     g.setNode('a', { rank: 0 })
     addBorderSegments(g)
     expect(g.nodeCount()).to.equal(1)

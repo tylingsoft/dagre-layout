@@ -7,14 +7,14 @@
 const fs = require('fs')
 const semver = require('semver')
 
-var packageFile = fs.readFileSync('package.json')
-var packageJson = JSON.parse(packageFile)
+const packageFile = fs.readFileSync('package.json')
+const packageJson = JSON.parse(packageFile)
 
 if (!('version' in packageJson)) {
   bail('ERROR: Could not find version in package.json')
 }
 
-var ver = semver.parse(packageJson.version)
+const ver = semver.parse(packageJson.version)
 packageJson.version = ver.inc('patch').toString() + '-pre'
 
 fs.writeFileSync('package.json', JSON.stringify(packageJson, undefined, 2))

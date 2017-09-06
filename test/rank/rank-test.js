@@ -34,7 +34,7 @@ describe('rank', function () {
       })
 
       it('can rank a single node graph', function () {
-        var g = new Graph().setGraph({}).setNode('a', {})
+        const g = new Graph().setGraph({}).setNode('a', {})
         rank(g, ranker)
         expect(g.node('a').rank).to.equal(0)
       })

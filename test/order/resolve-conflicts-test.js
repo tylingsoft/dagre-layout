@@ -5,14 +5,14 @@ const Graph = require('graphlib').Graph
 const resolveConflicts = require('../../lib/order/resolve-conflicts')
 
 describe('order/resolveConflicts', function () {
-  var cg
+  let cg
 
   beforeEach(function () {
     cg = new Graph()
   })
 
   it('returns back nodes unchanged when no constraints exist', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 2, weight: 3 },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
@@ -23,7 +23,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('returns back nodes unchanged when no conflicts exist', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 2, weight: 3 },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
@@ -35,7 +35,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('coalesces nodes when there is a conflict', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 2, weight: 3 },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
@@ -50,7 +50,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('coalesces nodes when there is a conflict #2', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 4, weight: 1 },
       { v: 'b', barycenter: 3, weight: 1 },
       { v: 'c', barycenter: 2, weight: 1 },
@@ -67,14 +67,14 @@ describe('order/resolveConflicts', function () {
   })
 
   it('works with multiple constraints for the same target #1', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 4, weight: 1 },
       { v: 'b', barycenter: 3, weight: 1 },
       { v: 'c', barycenter: 2, weight: 1 }
     ]
     cg.setEdge('a', 'c')
     cg.setEdge('b', 'c')
-    var results = resolveConflicts(input, cg)
+    const results = resolveConflicts(input, cg)
     expect(results).to.have.length(1)
     expect(_.indexOf(results[0].vs, 'c')).to.be.gt(_.indexOf(results[0].vs, 'a'))
     expect(_.indexOf(results[0].vs, 'c')).to.be.gt(_.indexOf(results[0].vs, 'b'))
@@ -84,7 +84,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('works with multiple constraints for the same target #2', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 4, weight: 1 },
       { v: 'b', barycenter: 3, weight: 1 },
       { v: 'c', barycenter: 2, weight: 1 },
@@ -94,7 +94,7 @@ describe('order/resolveConflicts', function () {
     cg.setEdge('a', 'd')
     cg.setEdge('b', 'c')
     cg.setEdge('c', 'd')
-    var results = resolveConflicts(input, cg)
+    const results = resolveConflicts(input, cg)
     expect(results).to.have.length(1)
     expect(_.indexOf(results[0].vs, 'c')).to.be.gt(_.indexOf(results[0].vs, 'a'))
     expect(_.indexOf(results[0].vs, 'c')).to.be.gt(_.indexOf(results[0].vs, 'b'))
@@ -105,7 +105,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('does nothing to a node lacking both a barycenter and a constraint', function () {
-    var input = [
+    const input = [
       { v: 'a' },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
@@ -116,7 +116,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('treats a node w/o a barycenter as always violating constraints #1', function () {
-    var input = [
+    const input = [
       { v: 'a' },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
@@ -127,7 +127,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('treats a node w/o a barycenter as always violating constraints #2', function () {
-    var input = [
+    const input = [
       { v: 'a' },
       { v: 'b', barycenter: 1, weight: 2 }
     ]
@@ -138,7 +138,7 @@ describe('order/resolveConflicts', function () {
   })
 
   it('ignores edges not related to entries', function () {
-    var input = [
+    const input = [
       { v: 'a', barycenter: 2, weight: 3 },
       { v: 'b', barycenter: 1, weight: 2 }
     ]

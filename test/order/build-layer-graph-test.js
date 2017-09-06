@@ -5,7 +5,7 @@ const Graph = require('graphlib').Graph
 const buildLayerGraph = require('../../lib/order/build-layer-graph')
 
 describe('order/buildLayerGraph', function () {
-  var g
+  let g
 
   beforeEach(function () {
     g = new Graph({ compound: true, multigraph: true })
@@ -17,8 +17,7 @@ describe('order/buildLayerGraph', function () {
     g.setNode('c', { rank: 2 })
     g.setNode('d', { rank: 3 })
 
-    var lg
-    lg = buildLayerGraph(g, 1, 'inEdges')
+    const lg = buildLayerGraph(g, 1, 'inEdges')
     expect(lg.hasNode(lg.graph().root))
     expect(lg.children()).eqls([lg.graph().root])
     expect(lg.children(lg.graph().root)).eqls(['a', 'b'])
@@ -43,7 +42,7 @@ describe('order/buildLayerGraph', function () {
     g.setNode('b', { foo: 2, rank: 2 })
     g.setEdge('a', 'b', { weight: 1 })
 
-    var lg = buildLayerGraph(g, 2, 'inEdges')
+    const lg = buildLayerGraph(g, 2, 'inEdges')
 
     expect(lg.node('a').foo).equals(1)
     g.node('a').foo = 'updated'

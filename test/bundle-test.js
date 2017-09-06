@@ -17,7 +17,7 @@ describe('bundle', function () {
   })
 
   it('can do trivial layout', function () {
-    var g = new graphlib.Graph().setGraph({})
+    const g = new graphlib.Graph().setGraph({})
     g.setNode('a', { label: 'a', width: 50, height: 100 })
     g.setNode('b', { label: 'b', width: 50, height: 100 })
     g.setEdge('a', 'b', { label: 'ab', width: 50, height: 100 })
