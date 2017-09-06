@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const _ = require('lodash')
+import _ from 'lodash'
 const expect = require('../chai').expect
 const buildLayerMatrix = require('../../lib/util').buildLayerMatrix
 const bk = require('../../lib/position/bk')

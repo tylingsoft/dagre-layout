@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const _ = require('lodash')
+import _ from 'lodash'
 const expect = require('../chai').expect
 const Graph = require('graphlib').Graph
 const resolveConflicts = require('../../lib/order/resolve-conflicts')
