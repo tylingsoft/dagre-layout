@@ -3,8 +3,7 @@ MOD = dagre-layout
 YARN = yarn
 ISTANBUL = ./node_modules/.bin/istanbul
 KARMA = ./node_modules/.bin/karma
-MOCHA = ./node_modules/.bin/mocha
-UGLIFY = ./node_modules/.bin/uglifyjs
+MOCHA = ./node_modules/.bin/_mocha
 
 ISTANBUL_OPTS = --dir $(COVERAGE_DIR) --report html
 MOCHA_OPTS = -R dot
@@ -32,12 +31,6 @@ unit-test: $(SRC_FILES) $(TEST_FILES) node_modules
 
 browser-test:
 	$(KARMA) start --single-run $(KARMA_OPTS)
-
-$(DIST_DIR)/$(MOD).min.js: $(DIST_DIR)/$(MOD).js
-	@$(UGLIFY) $< --comments '@license' > $@
-
-$(DIST_DIR)/$(MOD).core.min.js: $(DIST_DIR)/$(MOD).core.js
-	@$(UGLIFY) $< --comments '@license' > $@
 
 release:
 	@echo
