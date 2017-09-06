@@ -33991,7 +33991,7 @@ function debugOrdering(g) {
 "use strict";
 
 
-module.exports = "0.7.7";
+module.exports = "0.7.8";
 
 /***/ })
 /******/ ]);

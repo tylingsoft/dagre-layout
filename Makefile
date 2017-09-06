@@ -17,11 +17,8 @@ DIST_DIR = dist
 
 SRC_FILES = index.js lib/version.js $(shell find lib -type f -name '*.js')
 TEST_FILES = $(shell find test -type f -name '*.js' | grep -v 'bundle-test.js')
-DIST_FILES = $(addprefix $(DIST_DIR)/, \
-						$(MOD).js $(MOD).min.js \
-						$(MOD).core.js $(MOD).core.min.js)
 
-.PHONY: all bench browser-test unit-test test dist
+.PHONY: all bench browser-test unit-test test
 
 all: unit-test
 
@@ -47,12 +44,7 @@ $(DIST_DIR)/$(MOD).min.js: $(DIST_DIR)/$(MOD).js
 $(DIST_DIR)/$(MOD).core.min.js: $(DIST_DIR)/$(MOD).core.js
 	@$(UGLIFY) $< --comments '@license' > $@
 
-dist: $(DIST_FILES) | test
-	@rm -rf $@
-	@mkdir -p $@
-	@cp $^ dist
-
-release: dist
+release:
 	@echo
 	@echo Starting release...
 	@echo

@@ -1,6 +1,6 @@
 {
   "name": "dagre-layout",
-  "version": "0.7.7",
+  "version": "0.7.8",
   "description": "Graph layout for JavaScript",
   "author": "Tyler Long <tyler4long@gmail.com>",
   "main": "dist/dagre-layout.js",
@@ -12,7 +12,6 @@
     "test": "make test",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors",
     "build:watch": "yarn build -- --watch",
-    "dist": "make dist",
     "upgrade": "yarn-upgrade-all && yarn remove lodash && yarn add lodash@3.10.1 && yarn remove jshint-stylish && yarn add --dev jshint-stylish@1.0.2"
   },
   "dependencies": {
