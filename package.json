@@ -27,6 +27,7 @@
     "benchmark": "^2.1.4",
     "chai": "^4.1.2",
     "istanbul": "^0.4.5",
+    "jest": "^21.0.1",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.0.1",
@@ -50,6 +51,12 @@
     "ignore": [
       "dist/**/*.js",
       "coverage/**/*.js"
+    ]
+  },
+  "jest": {
+    "testRegex": "test/.+?-test\\.js",
+    "testPathIgnorePatterns": [
+      "test/bundle-test\\.js"
     ]
   }
 }
