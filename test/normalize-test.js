@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-const __ = require('lodash3')
 const _ = require('lodash')
 const expect = require('./chai').expect
 const normalize = require('../lib/normalize')
