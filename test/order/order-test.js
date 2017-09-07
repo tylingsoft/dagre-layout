@@ -4,7 +4,7 @@ import { expect } from 'chai'
 import { Graph } from 'graphlib'
 import order from '../../lib/order'
 import crossCount from '../../lib/order/cross-count'
-import util from '../../lib/util'
+import * as util from '../../lib/util'
 
 describe('order', function () {
   let g

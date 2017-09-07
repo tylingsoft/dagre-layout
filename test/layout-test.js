@@ -1,8 +1,10 @@
 /* eslint-env mocha */
 import _ from 'lodash'
 import { expect } from 'chai'
-import { layout } from '../index'
+import index from '../index'
 import { Graph } from 'graphlib'
+
+const { layout } = index
 
 describe('layout', function () {
   let g

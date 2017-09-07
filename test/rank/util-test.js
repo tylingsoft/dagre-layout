@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { Graph } from 'graphlib'
 
 import { normalizeRanks } from '../../lib/util'
-import rankUtil from '../../lib/rank/util'
+import * as rankUtil from '../../lib/rank/util'
 
 const longestPath = rankUtil.longestPath
 

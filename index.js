@@ -1,10 +1,10 @@
 import graphlib from 'graphlib'
 import layout from './lib/layout'
 import debug from './lib/debug'
-import util from './lib/util'
+import * as util from './lib/util'
 import version from './lib/version'
 
-module.exports = {
+export default {
   graphlib,
   layout,
   debug,
