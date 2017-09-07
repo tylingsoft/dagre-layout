@@ -2,3 +2,6 @@
 - Replace require with import
 - Replace module.exports with export default
 - Get rid of Infinity
+- Get rid of lodash3in4
+- Compare lodash v3 and v4 code
+- inspect _.min & _.max usage
