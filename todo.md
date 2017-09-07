@@ -1,3 +1,4 @@
 - Support Travis CI and coveralls.io
 - Replace require with import
 - Replace module.exports with export default
+- Get rid of Infinity
