@@ -22,12 +22,12 @@ describe('rank', function () {
       .setPath(['a', 'f', 'g'])
   })
 
-  __.each(RANKERS, function (ranker) {
+  _.each(RANKERS, function (ranker) {
     describe(ranker, function () {
       it('respects the minlen attribute', function () {
         g.graph().ranker = ranker
         rank(g)
-        __.each(g.edges(), function (e) {
+        _.each(g.edges(), function (e) {
           const vRank = g.node(e.v).rank
           const wRank = g.node(e.w).rank
           expect(wRank - vRank).to.be.gte(g.edge(e).minlen)
