@@ -1,9 +1,10 @@
 /* eslint-env mocha */
 import { expect } from './chai'
+import { version } from '../index'
+import { version as packageVersion } from '../package'
 
 describe('version', function () {
   it('should match the version from package.json', function () {
-    const packageVersion = require('../package').version
-    expect(require('../index').version).to.equal(packageVersion)
+    expect(version).to.equal(packageVersion)
   })
 })

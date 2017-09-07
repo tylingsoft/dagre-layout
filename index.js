@@ -1,11 +1,16 @@
-module.exports = {
-  graphlib: require('./lib/graphlib'),
+import graphlib from './lib/graphlib'
+import layout from './lib/layout'
+import debug from './lib/debug'
+import util from './lib/util'
+import version from './lib/version'
 
-  layout: require('./lib/layout'),
-  debug: require('./lib/debug'),
+module.exports = {
+  graphlib,
+  layout,
+  debug,
   util: {
-    time: require('./lib/util').time,
-    notime: require('./lib/util').notime
+    time: util.time,
+    notime: util.notime
   },
-  version: require('./lib/version')
+  version
 }

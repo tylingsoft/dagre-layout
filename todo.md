@@ -1,3 +1,3 @@
 - Support Travis CI and coveralls.io
-- Replace require with import
 - Replace module.exports with export default
+- Remove lib/graphlib.js
