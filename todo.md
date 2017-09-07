@@ -2,5 +2,4 @@
 - Replace require with import
 - Replace module.exports with export default
 - Get rid of Infinity
-- Get rid of lodash3in4
 - inspect _.min & _.max usage
