@@ -1,4 +1,4 @@
-import graphlib from './lib/graphlib'
+import graphlib from 'graphlib'
 import layout from './lib/layout'
 import debug from './lib/debug'
 import util from './lib/util'
