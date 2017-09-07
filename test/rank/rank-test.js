@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const rank = require('../../lib/rank')
-const Graph = require('graphlib').Graph
+import _ from 'lodash'
+import { expect } from '../chai'
+import rank from '../../lib/rank'
+import { Graph } from 'graphlib'
 
 describe('rank', function () {
   const RANKERS = [

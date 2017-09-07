@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('./chai').expect
-const Graph = require('graphlib').Graph
-const util = require('../lib/util')
+import _ from 'lodash'
+import { expect } from './chai'
+import { Graph } from 'graphlib'
+import util from '../lib/util'
 
 describe('util', function () {
   describe('simplify', function () {

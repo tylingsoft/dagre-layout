@@ -1,8 +1,11 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const buildLayerMatrix = require('../../lib/util').buildLayerMatrix
-const bk = require('../../lib/position/bk')
+import _ from 'lodash'
+import { Graph } from 'graphlib'
+
+import { expect } from '../chai'
+import { buildLayerMatrix } from '../../lib/util'
+import bk from '../../lib/position/bk'
+
 const findType1Conflicts = bk.findType1Conflicts
 const findType2Conflicts = bk.findType2Conflicts
 const addConflict = bk.addConflict
@@ -13,7 +16,6 @@ const alignCoordinates = bk.alignCoordinates
 const balance = bk.balance
 const findSmallestWidthAlignment = bk.findSmallestWidthAlignment
 const positionX = bk.positionX
-const Graph = require('graphlib').Graph
 
 describe('position/bk', function () {
   let g

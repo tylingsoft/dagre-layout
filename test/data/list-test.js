@@ -1,6 +1,6 @@
 /* eslint-env mocha */
-const expect = require('../chai').expect
-const List = require('../../lib/data/list')
+import { expect } from '../chai'
+import List from '../../lib/data/list'
 
 describe('data.List', function () {
   let list

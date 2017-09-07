@@ -1,8 +1,9 @@
 /* eslint-env mocha */
-const expect = require('./chai').expect
-const Graph = require('graphlib').Graph
-const components = require('graphlib').alg.components
-const nestingGraph = require('../lib/nesting-graph')
+import { expect } from './chai'
+import { Graph, alg } from 'graphlib'
+import nestingGraph from '../lib/nesting-graph'
+
+const components = alg.components
 
 describe('rank/nestingGraph', function () {
   let g

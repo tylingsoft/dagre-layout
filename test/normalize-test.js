@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('./chai').expect
-const normalize = require('../lib/normalize')
-const Graph = require('graphlib').Graph
+import _ from 'lodash'
+import { expect } from './chai'
+import normalize from '../lib/normalize'
+import { Graph } from 'graphlib'
 
 describe('normalize', function () {
   let g

@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const Graph = require('graphlib').Graph
-const buildLayerGraph = require('../../lib/order/build-layer-graph')
+import _ from 'lodash'
+import { expect } from '../chai'
+import { Graph } from 'graphlib'
+import buildLayerGraph from '../../lib/order/build-layer-graph'
 
 describe('order/buildLayerGraph', function () {
   let g

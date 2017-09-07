@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const sortSubgraph = require('../../lib/order/sort-subgraph')
-const Graph = require('graphlib').Graph
+import _ from 'lodash'
+import { expect } from '../chai'
+import sortSubgraph from '../../lib/order/sort-subgraph'
+import { Graph } from 'graphlib'
 
 describe('order/sortSubgraph', function () {
   let g

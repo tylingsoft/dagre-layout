@@ -1,16 +1,17 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const Graph = require('graphlib').Graph
-const networkSimplex = require('../../lib/rank/network-simplex')
-const longestPath = require('../../lib/rank/util').longestPath
+import _ from 'lodash'
+import { expect } from '../chai'
+import { Graph } from 'graphlib'
+import networkSimplex from '../../lib/rank/network-simplex'
+import { longestPath } from '../../lib/rank/util'
+import { normalizeRanks } from '../../lib/util'
+
 const initLowLimValues = networkSimplex.initLowLimValues
 const initCutValues = networkSimplex.initCutValues
 const calcCutValue = networkSimplex.calcCutValue
 const leaveEdge = networkSimplex.leaveEdge
 const enterEdge = networkSimplex.enterEdge
 const exchangeEdges = networkSimplex.exchangeEdges
-const normalizeRanks = require('../../lib/util').normalizeRanks
 
 describe('network simplex', function () {
   let g

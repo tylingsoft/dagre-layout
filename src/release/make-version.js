@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-const pkg = require('../../package.json')
+import pkg from '../../package.json'
 console.log("module.exports = '" + pkg.version + "'")

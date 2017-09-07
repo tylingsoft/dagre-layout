@@ -1,9 +1,10 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('./chai').expect
-const Graph = require('graphlib').Graph
-const findCycles = require('graphlib').alg.findCycles
-const greedyFAS = require('../lib/greedy-fas')
+import _ from 'lodash'
+import { expect } from './chai'
+import { Graph, alg } from 'graphlib'
+import greedyFAS from '../lib/greedy-fas'
+
+const findCycles = alg.findCycles
 
 describe('greedyFAS', function () {
   let g

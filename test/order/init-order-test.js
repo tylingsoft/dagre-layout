@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const Graph = require('graphlib').Graph
-const initOrder = require('../../lib/order/init-order')
+import _ from 'lodash'
+import { expect } from '../chai'
+import { Graph } from 'graphlib'
+import initOrder from '../../lib/order/init-order'
 
 describe('order/initOrder', function () {
   let g

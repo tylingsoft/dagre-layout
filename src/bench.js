@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const Benchmark = require('benchmark')
-const sprintf = require('sprintf').sprintf
+import Benchmark from 'benchmark'
+import { sprintf } from 'sprintf'
+import { Graph } from 'graphlib'
 
-const Graph = require('graphlib').Graph
-const rank = require('../lib/rank')
-const layout = require('..').layout
+import rank from '../lib/rank'
+import { layout } from '../index'
 
 function runBenchmark (name, fn) {
   const options = {}

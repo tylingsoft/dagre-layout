@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('./chai').expect
-const layout = require('../index').layout
-const Graph = require('graphlib').Graph
+import _ from 'lodash'
+import { expect } from './chai'
+import { layout } from '../index'
+import { Graph } from 'graphlib'
 
 describe('layout', function () {
   let g

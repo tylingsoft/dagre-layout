@@ -1,9 +1,10 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('./chai').expect
-const acyclic = require('../lib/acyclic')
-const Graph = require('graphlib').Graph
-const findCycles = require('graphlib').alg.findCycles
+import _ from 'lodash'
+import { expect } from './chai'
+import acyclic from '../lib/acyclic'
+import { Graph, alg } from 'graphlib'
+
+const findCycles = alg.findCycles
 
 describe('acyclic', function () {
   const ACYCLICERS = [

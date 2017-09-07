@@ -1,4 +1,4 @@
-const chai = require('chai')
+import chai from 'chai'
 
 module.exports = chai
 

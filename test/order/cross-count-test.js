@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-const expect = require('../chai').expect
-const Graph = require('graphlib').Graph
-const crossCount = require('../../lib/order/cross-count')
+import { expect } from '../chai'
+import { Graph } from 'graphlib'
+import crossCount from '../../lib/order/cross-count'
 
 describe('crossCount', function () {
   let g

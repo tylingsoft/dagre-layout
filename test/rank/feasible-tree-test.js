@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-const _ = require('lodash')
-const expect = require('../chai').expect
-const Graph = require('graphlib').Graph
-const feasibleTree = require('../../lib/rank/feasible-tree')
+import _ from 'lodash'
+import { expect } from '../chai'
+import { Graph } from 'graphlib'
+import feasibleTree from '../../lib/rank/feasible-tree'
 
 describe('feasibleTree', function () {
   it('creates a tree for a trivial input graph', function () {

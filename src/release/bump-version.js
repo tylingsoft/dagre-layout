@@ -4,8 +4,8 @@
  * Bumps the minor version and sets the prelease tag.
  */
 
-const fs = require('fs')
-const semver = require('semver')
+import fs from 'fs'
+import semver from 'semver'
 
 const packageFile = fs.readFileSync('package.json')
 const packageJson = JSON.parse(packageFile)
