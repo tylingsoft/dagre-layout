@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from '../chai'
+import { expect } from 'chai'
 import sort from '../../lib/order/sort'
 
 describe('sort', function () {

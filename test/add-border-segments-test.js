@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from './chai'
+import { expect } from 'chai'
 import addBorderSegments from '../lib/add-border-segments'
 import { Graph } from 'graphlib'
 

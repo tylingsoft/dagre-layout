@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from '../chai'
+import { expect } from 'chai'
 import barycenter from '../../lib/order/barycenter'
 import { Graph } from 'graphlib'
 

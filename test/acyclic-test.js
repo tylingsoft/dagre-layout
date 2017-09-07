@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 import _ from 'lodash'
-import { expect } from './chai'
+import { expect } from 'chai'
 import acyclic from '../lib/acyclic'
 import { Graph, alg } from 'graphlib'
 

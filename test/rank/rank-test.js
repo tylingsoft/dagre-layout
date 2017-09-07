@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 import _ from 'lodash'
-import { expect } from '../chai'
+import { expect } from 'chai'
 import rank from '../../lib/rank'
 import { Graph } from 'graphlib'
 

@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from './chai'
+import { expect } from 'chai'
 import { version } from '../index'
 import { version as packageVersion } from '../package'
 

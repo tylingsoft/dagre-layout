@@ -2,7 +2,7 @@
 import _ from 'lodash'
 import { Graph } from 'graphlib'
 
-import { expect } from '../chai'
+import { expect } from 'chai'
 import { buildLayerMatrix } from '../../lib/util'
 import bk from '../../lib/position/bk'
 

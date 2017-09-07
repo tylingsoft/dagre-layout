@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from './chai'
+import { expect } from 'chai'
 import position from '../lib/position'
 import { Graph } from 'graphlib'
 

@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from '../chai'
+import { expect } from 'chai'
 import { Graph } from 'graphlib'
 
 import { normalizeRanks } from '../../lib/util'

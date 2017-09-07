@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from './chai'
+import { expect } from 'chai'
 import { Graph, alg } from 'graphlib'
 import nestingGraph from '../lib/nesting-graph'
 

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 import _ from 'lodash'
-import { expect } from '../chai'
+import { expect } from 'chai'
 import { Graph } from 'graphlib'
 import order from '../../lib/order'
 import crossCount from '../../lib/order/cross-count'
