@@ -3,9 +3,9 @@ import { sprintf } from 'sprintf'
 import { Graph } from 'graphlib'
 
 import rank from '../lib/rank'
-import index from '../index'
+import dagre from '../index'
 
-const layout = index.layout
+const { layout } = dagre
 
 function runBenchmark (name, fn) {
   const options = {}
