@@ -2,9 +2,10 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import order from '../../lib/order'
 import crossCount from '../../lib/order/cross-count'
-import * as util from '../../lib/util'
+import util from '../../lib/util'
 
 describe('order', function () {
   let g

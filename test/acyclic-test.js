@@ -1,8 +1,9 @@
 /* eslint-env mocha */
 import _ from 'lodash'
-import { expect } from 'chai'
-import acyclic from '../lib/acyclic'
 import { Graph, alg } from 'graphlib'
+import { expect } from 'chai'
+
+import acyclic from '../lib/acyclic'
 
 const findCycles = alg.findCycles
 

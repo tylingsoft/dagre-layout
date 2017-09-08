@@ -1,5 +1,6 @@
 /* eslint-env mocha */
 import { expect } from 'chai'
+
 import List from '../../lib/data/list'
 
 describe('data.List', function () {

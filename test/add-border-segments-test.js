@@ -1,7 +1,8 @@
 /* eslint-env mocha */
 import { expect } from 'chai'
-import addBorderSegments from '../lib/add-border-segments'
 import { Graph } from 'graphlib'
+
+import addBorderSegments from '../lib/add-border-segments'
 
 describe('addBorderSegments', function () {
   let g

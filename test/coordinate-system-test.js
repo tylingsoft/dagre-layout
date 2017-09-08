@@ -1,7 +1,8 @@
 /* eslint-env mocha */
 import { Graph } from 'graphlib'
-import coordinateSystem from '../lib/coordinate-system'
 import { expect } from 'chai'
+
+import coordinateSystem from '../lib/coordinate-system'
 
 describe('coordinateSystem', function () {
   let g
