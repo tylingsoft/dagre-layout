@@ -1,11 +1,11 @@
-#!/usr/bin/env node
-
 import Benchmark from 'benchmark'
 import { sprintf } from 'sprintf'
 import { Graph } from 'graphlib'
 
 import rank from '../lib/rank'
-import { layout } from '../index'
+import index from '../index'
+
+const layout = index.layout
 
 function runBenchmark (name, fn) {
   const options = {}

@@ -1,8 +1,5 @@
 MOD = dagre-layout
 
-bench:
-	@src/bench.js
-
 lib/version.js: package.json
 	@src/release/make-version.js > $@
 

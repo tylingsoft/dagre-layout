@@ -1,3 +1,2 @@
 - Support Travis CI and coveralls.io
 - Replace module.exports with export default
-- Run `src/bench.js` (via Makefile)
