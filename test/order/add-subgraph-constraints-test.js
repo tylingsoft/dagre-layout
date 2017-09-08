@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import addSubgraphConstraints from '../../lib/order/add-subgraph-constraints'
 
 describe('order/addSubgraphConstraints', function () {

@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph, alg } from 'graphlib'
+
 import greedyFAS from '../lib/greedy-fas'
 
 const findCycles = alg.findCycles

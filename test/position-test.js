@@ -1,7 +1,8 @@
 /* eslint-env mocha */
 import { expect } from 'chai'
-import position from '../lib/position'
 import { Graph } from 'graphlib'
+
+import position from '../lib/position'
 
 describe('position', function () {
   let g

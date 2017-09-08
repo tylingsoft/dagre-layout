@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import parentDummyChains from '../lib/parent-dummy-chains'
 
 describe('parentDummyChains', function () {

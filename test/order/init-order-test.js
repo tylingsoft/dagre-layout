@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import initOrder from '../../lib/order/init-order'
 
 describe('order/initOrder', function () {

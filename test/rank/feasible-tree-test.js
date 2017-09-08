@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import feasibleTree from '../../lib/rank/feasible-tree'
 
 describe('feasibleTree', function () {

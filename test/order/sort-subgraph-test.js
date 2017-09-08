@@ -1,8 +1,9 @@
 /* eslint-env mocha */
 import _ from 'lodash'
 import { expect } from 'chai'
-import sortSubgraph from '../../lib/order/sort-subgraph'
 import { Graph } from 'graphlib'
+
+import sortSubgraph from '../../lib/order/sort-subgraph'
 
 describe('order/sortSubgraph', function () {
   let g

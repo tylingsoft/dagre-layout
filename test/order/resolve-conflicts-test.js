@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import resolveConflicts from '../../lib/order/resolve-conflicts'
 
 describe('order/resolveConflicts', function () {

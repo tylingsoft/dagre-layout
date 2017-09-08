@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
+
 import networkSimplex from '../../lib/rank/network-simplex'
 import { longestPath } from '../../lib/rank/util'
 import { normalizeRanks } from '../../lib/util'

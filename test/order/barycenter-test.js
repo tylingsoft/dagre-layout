@@ -1,7 +1,8 @@
 /* eslint-env mocha */
 import { expect } from 'chai'
-import barycenter from '../../lib/order/barycenter'
 import { Graph } from 'graphlib'
+
+import barycenter from '../../lib/order/barycenter'
 
 describe('order/barycenter', function () {
   let g
