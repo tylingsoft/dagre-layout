@@ -1,12 +1,9 @@
 dist: trusty
-addons:
-  chrome: stable
 language: node_js
 node_js:
   - "8"
-before_script:
-  - yarn build
 script:
-  - yarn test -- --browsers Chrome
+  - yarn lint
+  - yarn jest
 after_success:
   - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
