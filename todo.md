@@ -1,1 +1,3 @@
-- Support Travis CI and coveralls.io
+- Support Travis CI
+- Setup coveralls.io
+- "main": "dist/dagre-layout.core.js" ?

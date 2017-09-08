@@ -1,6 +1,3 @@
-// Karma configuration
-// Generated on Sat Oct 18 2014 17:38:05 GMT-0700 (PDT)
-
 export default function (config) {
   config.set({
 
@@ -13,9 +10,8 @@ export default function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'dist/dagre-layout.js',
-
       'node_modules/chai/chai.js',
+      'dist/dagre-layout.js',
       'test/bundle-test.js'
     ],
 
