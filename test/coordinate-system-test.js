@@ -1,4 +1,4 @@
-/* eslint-env mocha */
+/* eslint-env jest */
 import { Graph } from 'graphlib'
 import { expect } from 'chai'
 

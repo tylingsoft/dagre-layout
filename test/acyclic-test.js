@@ -1,4 +1,4 @@
-/* eslint-env mocha */
+/* eslint-env jest */
 import _ from 'lodash'
 import { Graph, alg } from 'graphlib'
 import { expect } from 'chai'
