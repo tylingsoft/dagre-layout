@@ -4,10 +4,9 @@ addons:
 language: node_js
 node_js:
   - "8"
+before_script:
+  - yarn build
 script:
   - yarn test -- --browsers Chrome
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 after_success:
   - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
