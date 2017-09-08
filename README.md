@@ -1,6 +1,7 @@
 # dagre-layout - Graph layout for JavaScript
 
 [![Build Status](https://secure.travis-ci.org/tylingsoft/dagre-layout.png?branch=master)](http://travis-ci.org/tylingsoft/dagre-layout)
+[![Coverage Status](https://coveralls.io/repos/github/tylingsoft/dagre-layout/badge.svg?branch=master)](https://coveralls.io/github/tylingsoft/dagre-layout?branch=master)
 
 This project is an out-of-box replacement for [dagre](https://github.com/cpettitt/dagre) which is not being actively developed or maintained.
 
