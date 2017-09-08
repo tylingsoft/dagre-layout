@@ -1,7 +1,7 @@
 import graphlib from 'graphlib'
 import layout from './lib/layout'
 import debug from './lib/debug'
-import * as util from './lib/util'
+import util from './lib/util'
 import version from './lib/version'
 
 export default {
