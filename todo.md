@@ -1,1 +1,2 @@
 - Support Travis CI and coveralls.io
+- Get rid of Makefile
