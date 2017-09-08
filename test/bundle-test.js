@@ -1,10 +1,10 @@
 /* eslint-env mocha */
-/* global chai, dagre */
 
 // These are smoke tests to make sure the bundles look like they are working
 // correctly.
 
-const expect = chai.expect
+const expect = window.chai.expect
+const dagre = window.dagre
 const graphlib = dagre.graphlib
 
 describe('bundle', function () {

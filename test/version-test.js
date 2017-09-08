@@ -1,11 +1,11 @@
 /* eslint-env jest */
 import { expect } from 'chai'
 
-import index from '../index'
-import { version as packageVersion } from '../package'
+import dagre from '../index'
+import { version as packageVersion } from '../package.json'
 
 describe('version', function () {
   it('should match the version from package.json', function () {
-    expect(index.version).to.equal(packageVersion)
+    expect(dagre.version).to.equal(packageVersion)
   })
 })

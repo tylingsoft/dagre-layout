@@ -5,7 +5,7 @@ import { expect } from 'chai'
 
 import acyclic from '../lib/acyclic'
 
-const findCycles = alg.findCycles
+const { findCycles } = alg
 
 describe('acyclic', function () {
   const ACYCLICERS = [

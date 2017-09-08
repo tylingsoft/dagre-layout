@@ -5,7 +5,7 @@ import { Graph, alg } from 'graphlib'
 
 import greedyFAS from '../lib/greedy-fas'
 
-const findCycles = alg.findCycles
+const { findCycles } = alg
 
 describe('greedyFAS', function () {
   let g

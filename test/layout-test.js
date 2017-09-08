@@ -3,9 +3,9 @@ import _ from 'lodash'
 import { expect } from 'chai'
 import { Graph } from 'graphlib'
 
-import index from '../index'
+import dagre from '../index'
 
-const { layout } = index
+const { layout } = dagre
 
 describe('layout', function () {
   let g
