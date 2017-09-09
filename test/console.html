@@ -6,7 +6,7 @@
 <script src="../dist/dagre-layout.js"></script>
 <script src="http://cpettitt.github.io/project/graphlib-dot/latest/graphlib-dot.js"></script>
 <script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
 
 <style>
 body {
@@ -70,7 +70,12 @@ path.edge {
   <h1>Dagre Debug Console</h1>
 
   <div id="inputPanel">
-    <textarea rows=25 onkeyup="renderDot();"></textarea>
+    <textarea rows=25 onkeyup="renderDot();">
+digraph graphname {
+  a -> b -> c;
+  b -> d;
+}
+    </textarea>
     <input type="checkbox" id="timing" name="timing">Enable timing instrumentation</input>
   </div>
 
