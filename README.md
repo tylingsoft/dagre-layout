@@ -12,6 +12,17 @@ Dagre is a JavaScript library that makes it easy to lay out directed graphs on t
 For more details, including examples and configuration options, please see our [wiki](https://github.com/cpettitt/dagre/wiki).
 
 
+## Changes compared to cpettit/dagre
+
+- Upgrade all the dependencies
+- Yarn instead of NPM
+- Get rid of PhantomJS
+- ES6 instead of ES5
+- Use webpack instead of browserify
+- Use JavaScript Standard Style
+- Use Jest for testing
+
+
 ## Setup
 
 ```
