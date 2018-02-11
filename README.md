@@ -22,6 +22,7 @@ For more details, including examples and configuration options, please see our [
 - Use JavaScript Standard Style instead of JSHint
 - Use Jest for testing
 - Add test coverage report
+- Remove Bower support
 
 
 ## Setup

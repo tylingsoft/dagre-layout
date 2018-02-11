@@ -135,7 +135,7 @@ function render (g) {
 }
 
 function preLayout (g, svg) {
-  _.each(g.edges(), function (e) {
+  _.forEach(g.edges(), function (e) {
     const edge = g.edge(e)
     if (edge.label) {
       const group = appendLabel(svg, edge.label, edge, 0, 0)
@@ -143,7 +143,7 @@ function preLayout (g, svg) {
     }
   })
 
-  _.each(g.nodes(), function (v) {
+  _.forEach(g.nodes(), function (v) {
     if (g.children(v).length) {
       return
     }
@@ -192,7 +192,7 @@ function postLayout (g, root, svg) {
                             'scale(' + d3.event.scale + ')')
   }))
 
-  _.each(g.edges(), function (e) {
+  _.forEach(g.edges(), function (e) {
     const group = svg.select('g#edge-' + edgeObjToId(e))
     if (!group.empty()) {
       const edge = g.edge(e)
@@ -200,13 +200,13 @@ function postLayout (g, root, svg) {
     }
   })
 
-  _.each(g.nodes(), function (v) {
+  _.forEach(g.nodes(), function (v) {
     const group = svg.select('g#node-' + id(v))
     const node = g.node(v)
     group.attr('transform', 'translate(' + node.x + ',' + node.y + ')')
   })
 
-  _.each(g.edges(), function (e) {
+  _.forEach(g.edges(), function (e) {
     const points = g.edge(e).points
     const path = svg.insert('path', ':first-child')
                 .classed('edge', true)
@@ -220,7 +220,7 @@ function postLayout (g, root, svg) {
   function dfsChildren (v) {
     const children = g.children(v)
     if (children.length) {
-      _.each(children, dfsChildren)
+      _.forEach(children, dfsChildren)
 
       const node = g.node(v)
       svg.insert('g', ':first-child')
@@ -232,7 +232,7 @@ function postLayout (g, root, svg) {
            .attr('height', node.height)
     }
   };
-  _.each(g.children(), dfsChildren)
+  _.forEach(g.children(), dfsChildren)
 }
 
 function edgeObjToId (e) {
