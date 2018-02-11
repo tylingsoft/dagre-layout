@@ -1,6 +1,6 @@
 {
   "name": "dagre-layout",
-  "version": "0.9.0",
+  "version": "0.8.2",
   "description": "Graph layout for JavaScript",
   "author": "Tyler Long <tyler4long@gmail.com>",
   "main": "dist/dagre-layout.core.js",
@@ -17,8 +17,10 @@
     "bench": "node -r babel-register src/bench.js",
     "build": "webpack --progress --colors",
     "build:watch": "yarn build --watch",
+    "release": "yarn build -p",
     "upgrade": "yarn-upgrade-all",
-    "prepush": "yarn test"
+    "prepush": "yarn test",
+    "prepublish": "yarn release"
   },
   "dependencies": {
     "graphlib": "^2.1.5",

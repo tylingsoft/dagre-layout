@@ -28,7 +28,8 @@ export const configCreator = () => ({
         }
       }
     ]
-  }
+  },
+  devtool: 'source-map'
 })
 
 const config = configCreator()

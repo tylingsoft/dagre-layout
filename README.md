@@ -24,6 +24,7 @@ For more details, including examples and configuration options, please see our [
 - Add test coverage report
 - Remove Bower support
 - No more `INFINITY`
+- Git ignore auto-generated code
 
 
 ## Setup
