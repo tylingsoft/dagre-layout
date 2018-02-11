@@ -3,13 +3,13 @@
 [![Build Status](https://secure.travis-ci.org/tylingsoft/dagre-layout.png?branch=master)](http://travis-ci.org/tylingsoft/dagre-layout)
 [![Coverage Status](https://coveralls.io/repos/github/tylingsoft/dagre-layout/badge.svg?branch=master)](https://coveralls.io/github/tylingsoft/dagre-layout?branch=master)
 
-This project is an out-of-box replacement for [dagre](https://github.com/cpettitt/dagre) which is not being actively developed or maintained.
+This project is an out-of-box replacement for [dagre](https://github.com/dagrejs/dagre).
 
-This project isn't built from scratch. It's based on the original [dagre](https://github.com/cpettitt/dagre) project.
+This project isn't built from scratch. It's based on the original [dagre](https://github.com/dagrejs/dagre) project.
 
 Dagre is a JavaScript library that makes it easy to lay out directed graphs on the client-side.
 
-For more details, including examples and configuration options, please see our [wiki](https://github.com/cpettitt/dagre/wiki).
+For more details, including examples and configuration options, please see our [wiki](https://github.com/dagrejs/dagre/wiki).
 
 
 ## Changes compared to cpettit/dagre
@@ -19,7 +19,7 @@ For more details, including examples and configuration options, please see our [
 - Get rid of PhantomJS
 - ES6 instead of ES5
 - Use webpack instead of browserify
-- Use JavaScript Standard Style
+- Use JavaScript Standard Style instead of JSHint
 - Use Jest for testing
 
 
