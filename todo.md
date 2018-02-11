@@ -1,5 +1,3 @@
 - rewrite graphlib
 - https://github.com/dagrejs/dagre/compare/e66c29b87efa11e25896f08a20f1d39ef09c26c7...master
     - lib/position/bk.js
-    - lib/rank/util.js
-    - lib/util.js

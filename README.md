@@ -23,6 +23,7 @@ For more details, including examples and configuration options, please see our [
 - Use Jest for testing
 - Add test coverage report
 - Remove Bower support
+- No more `INFINITY`
 
 
 ## Setup
