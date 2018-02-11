@@ -68,11 +68,11 @@ describe('layout', function () {
   })
 
   describe('can layout an edge with a long label, with rankdir =', function () {
-    _.each(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
+    _.forEach(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
       it(rankdir, function () {
         g.graph().nodesep = g.graph().edgesep = 10
         g.graph().rankdir = rankdir
-        _.each(['a', 'b', 'c', 'd'], function (v) {
+        _.forEach(['a', 'b', 'c', 'd'], function (v) {
           g.setNode(v, { width: 10, height: 10 })
         })
         g.setEdge('a', 'c', { width: 2000, height: 10, labelpos: 'c' })
@@ -95,11 +95,11 @@ describe('layout', function () {
   })
 
   describe('can apply an offset, with rankdir =', function () {
-    _.each(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
+    _.forEach(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
       it(rankdir, function () {
         g.graph().nodesep = g.graph().edgesep = 10
         g.graph().rankdir = rankdir
-        _.each(['a', 'b', 'c', 'd'], function (v) {
+        _.forEach(['a', 'b', 'c', 'd'], function (v) {
           g.setNode(v, { width: 10, height: 10 })
         })
         g.setEdge('a', 'b', { width: 10, height: 10, labelpos: 'l', labeloffset: 1000 })
@@ -178,7 +178,7 @@ describe('layout', function () {
   })
 
   describe('can layout a self loop', function () {
-    _.each(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
+    _.forEach(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
       it('in rankdir = ' + rankdir, function () {
         g.graph().edgesep = 75
         g.graph().rankdir = rankdir
@@ -188,7 +188,7 @@ describe('layout', function () {
         const nodeA = g.node('a')
         const points = g.edge('a', 'a').points
         expect(points).to.have.length(7)
-        _.each(points, function (point) {
+        _.forEach(points, function (point) {
           if (rankdir !== 'LR' && rankdir !== 'RL') {
             expect(point.x).gt(nodeA.x)
             expect(Math.abs(point.y - nodeA.y)).lte(nodeA.height / 2)
@@ -209,7 +209,7 @@ describe('layout', function () {
   })
 
   it('minimizes the height of subgraphs', function () {
-    _.each(['a', 'b', 'c', 'd', 'x', 'y'], function (v) {
+    _.forEach(['a', 'b', 'c', 'd', 'x', 'y'], function (v) {
       g.setNode(v, { width: 50, height: 50 })
     })
     g.setPath(['a', 'b', 'c', 'd'])
@@ -238,7 +238,7 @@ describe('layout', function () {
       expect(g.node('sg').y, 'y ' + rankdir).gt(50 / 2)
     }
 
-    _.each(['tb', 'bt', 'lr', 'rl'], function (rankdir) {
+    _.forEach(['tb', 'bt', 'lr', 'rl'], function (rankdir) {
       g.graph().rankdir = rankdir
       layout(g)
       check(rankdir)
@@ -253,7 +253,7 @@ describe('layout', function () {
   })
 
   describe('ensures all coordinates are in the bounding box for the graph', function () {
-    _.each(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
+    _.forEach(['TB', 'BT', 'LR', 'RL'], function (rankdir) {
       describe(rankdir, function () {
         beforeEach(function () {
           g.graph().rankdir = rankdir

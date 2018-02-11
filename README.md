@@ -21,6 +21,7 @@ For more details, including examples and configuration options, please see our [
 - Use webpack instead of browserify
 - Use JavaScript Standard Style instead of JSHint
 - Use Jest for testing
+- Add test coverage report
 
 
 ## Setup

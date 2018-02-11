@@ -95,7 +95,7 @@ describe('greedyFAS', function () {
 function checkFAS (g, fas) {
   const n = g.nodeCount()
   const m = g.edgeCount()
-  _.each(fas, function (edge) {
+  _.forEach(fas, function (edge) {
     g.removeEdge(edge.v, edge.w)
   })
   expect(findCycles(g)).to.eql([])
