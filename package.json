@@ -20,7 +20,7 @@
     "release": "yarn build -p",
     "upgrade": "yarn-upgrade-all",
     "prepush": "yarn test",
-    "prepublish": "yarn release"
+    "prepublishOnly": "yarn release"
   },
   "dependencies": {
     "graphlib": "^2.1.5",
