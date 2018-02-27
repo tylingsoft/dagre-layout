@@ -12,8 +12,8 @@ describe('layout', function () {
 
   beforeEach(function () {
     g = new Graph({ multigraph: true, compound: true })
-          .setGraph({})
-          .setDefaultEdgeLabel(function () { return {} })
+      .setGraph({})
+      .setDefaultEdgeLabel(function () { return {} })
   })
 
   it('can layout a single node', function () {
@@ -154,9 +154,9 @@ describe('layout', function () {
     const points = g.edge('a', 'b').points
     expect(points).to.have.length(3)
     expect(points).eqls([
-      { x: 100 / 2, y: 100 },           // intersect with bottom of a
+      { x: 100 / 2, y: 100 }, // intersect with bottom of a
       { x: 100 / 2, y: 100 + 200 / 2 }, // point for edge label
-      { x: 100 / 2, y: 100 + 200 }      // intersect with top of b
+      { x: 100 / 2, y: 100 + 200 } // intersect with top of b
     ])
   })
 
@@ -169,11 +169,11 @@ describe('layout', function () {
     const points = g.edge('a', 'b').points
     expect(points).to.have.length(5)
     expect(points).eqls([
-      { x: 100 / 2, y: 100 },           // intersect with bottom of a
+      { x: 100 / 2, y: 100 }, // intersect with bottom of a
       { x: 100 / 2, y: 100 + 200 / 2 }, // bend #1
       { x: 100 / 2, y: 100 + 400 / 2 }, // point for edge label
       { x: 100 / 2, y: 100 + 600 / 2 }, // bend #2
-      { x: 100 / 2, y: 100 + 800 / 2 }  // intersect with top of b
+      { x: 100 / 2, y: 100 + 800 / 2 } // intersect with top of b
     ])
   })
 

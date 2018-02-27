@@ -11,8 +11,8 @@ describe('rank/nestingGraph', function () {
 
   beforeEach(function () {
     g = new Graph({ compound: true })
-          .setGraph({})
-          .setDefaultNodeLabel(function () { return {} })
+      .setGraph({})
+      .setDefaultNodeLabel(function () { return {} })
   })
 
   describe('run', function () {
