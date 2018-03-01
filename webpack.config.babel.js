@@ -2,6 +2,7 @@ import path from 'path'
 import nodeExternals from 'webpack-node-externals'
 
 export const configCreator = () => ({
+  mode: 'development',
   target: 'web',
   entry: {
     'dagre-layout': './index.js'
