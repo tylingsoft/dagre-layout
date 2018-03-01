@@ -44,6 +44,7 @@
     "sprintf": "^0.1.5",
     "standard": "^11.0.0",
     "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9",
     "webpack-node-externals": "^1.6.0",
     "yarn-upgrade-all": "^0.3.0"
   },
