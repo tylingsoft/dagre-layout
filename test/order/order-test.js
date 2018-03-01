@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import _ from 'lodash'
 import { expect } from 'chai'
-import { Graph } from 'graphlib'
+import { Graph } from 'graphlibrary'
 
 import order from '../../lib/order'
 import crossCount from '../../lib/order/cross-count'

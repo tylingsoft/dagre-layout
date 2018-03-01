@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import _ from 'lodash'
 import { expect } from 'chai'
-import { Graph, alg } from 'graphlib'
+import { Graph, alg } from 'graphlibrary'
 
 import greedyFAS from '../lib/greedy-fas'
 

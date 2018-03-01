@@ -1,6 +1,6 @@
 import Benchmark from 'benchmark'
 import { sprintf } from 'sprintf'
-import { Graph } from 'graphlib'
+import { Graph } from 'graphlibrary'
 
 import rank from '../lib/rank'
 import dagre from '../index'

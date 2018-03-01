@@ -23,7 +23,7 @@
     "prepublishOnly": "yarn release"
   },
   "dependencies": {
-    "graphlib": "^2.1.5",
+    "graphlibrary": "^2.1.8",
     "lodash": "^4.17.5"
   },
   "devDependencies": {

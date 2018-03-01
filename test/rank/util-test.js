@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import { expect } from 'chai'
-import { Graph } from 'graphlib'
+import { Graph } from 'graphlibrary'
 
 import { normalizeRanks } from '../../lib/util'
 import { longestPath } from '../../lib/rank/util'

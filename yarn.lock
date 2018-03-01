@@ -2793,11 +2793,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphlib@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/graphlib/-/graphlib-2.1.5.tgz#6afe1afcc5148555ec799e499056795bd6938c87"
+graphlibrary@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/graphlibrary/-/graphlibrary-2.1.8.tgz#3d4b3a867b23e5d4794f5037f3068c752c8c8580"
   dependencies:
-    lodash "^4.11.1"
+    lodash "^4.17.5"
 
 growl@1.10.3:
   version "1.10.3"
@@ -4110,7 +4110,7 @@ lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^4.11.1, lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.0:
+lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.0:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 

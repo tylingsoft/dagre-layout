@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import { expect } from 'chai'
-import { Graph } from 'graphlib'
+import { Graph } from 'graphlibrary'
 
 import addBorderSegments from '../lib/add-border-segments'
 

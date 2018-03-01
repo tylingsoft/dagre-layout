@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import { expect } from 'chai'
-import { Graph } from 'graphlib'
+import { Graph } from 'graphlibrary'
 
 import parentDummyChains from '../lib/parent-dummy-chains'
 
