@@ -5,12 +5,11 @@
 
 const expect = window.chai.expect
 const dagre = window.dagre
-const graphlib = dagre.graphlib
+const graphlib = window.graphlib
 
 describe('bundle', function () {
   it('exports dagre', function () {
     expect(dagre).to.be.an('object')
-    expect(dagre.graphlib).to.be.an('object')
     expect(dagre.layout).to.be.a('function')
   })
 
