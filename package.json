@@ -1,6 +1,6 @@
 {
   "name": "dagre-layout",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "Graph layout for JavaScript",
   "author": "Tyler Long <tyler4long@gmail.com>",
   "main": "dist/dagre-layout.core.js",
@@ -23,7 +23,7 @@
     "prepublishOnly": "yarn release"
   },
   "dependencies": {
-    "graphlibrary": "^2.1.8",
+    "graphlibrary": "^2.2.0",
     "lodash": "^4.17.5"
   },
   "devDependencies": {
