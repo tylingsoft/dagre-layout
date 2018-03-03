@@ -12,7 +12,6 @@ describe('bundle', function () {
     expect(dagre).to.be.an('object')
     expect(dagre.graphlib).to.be.an('object')
     expect(dagre.layout).to.be.a('function')
-    expect(dagre.util).to.be.an('object')
   })
 
   it('can do trivial layout', function () {
