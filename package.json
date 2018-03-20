@@ -1,9 +1,9 @@
 {
   "name": "dagre-layout",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "Graph layout for JavaScript",
   "author": "Tyler Long <tyler4long@gmail.com>",
-  "main": "dist/dagre-layout.js",
+  "main": "dist/dagre-layout.core.js",
   "keywords": [
     "graph",
     "layout",
