@@ -4,6 +4,7 @@
   "description": "Graph layout for JavaScript",
   "author": "Tyler Long <tyler4long@gmail.com>",
   "main": "dist/dagre-layout.core.js",
+  "module": "index.js",
   "keywords": [
     "graph",
     "layout",
